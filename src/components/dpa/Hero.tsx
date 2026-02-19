@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 const WA_LINK = "https://wa.me/88017414688828";
 
 const PROOF_CHIPS = [
@@ -16,25 +18,26 @@ export default function Hero() {
             <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-4">
               Maritime Compliance Support
             </p>
-            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-tight mb-6">
+            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.15] mb-8 max-w-lg">
               Professional Remote Marine Compliance Support
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-xl">
+            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-xl">
               Supporting DPA, ADPA, and Marine Superintendents with certification
               tracking, ISM documentation, and audit readiness — without hiring
               full-time staff.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-10">
+            <div className="flex flex-wrap gap-4 mb-12">
               <a
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-7 py-3 hover:bg-teal-hover transition-colors text-sm"
+                className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-8 py-4 hover:bg-teal-hover transition-colors text-base"
               >
                 <WhatsAppIcon />
                 WhatsApp Now
+                <ArrowRight size={16} />
               </a>
               <a
                 href="/contact"
@@ -49,7 +52,7 @@ export default function Hero() {
               {PROOF_CHIPS.map((chip) => (
                 <span
                   key={chip}
-                  className="border border-dpa-border text-sm font-medium text-foreground px-4 py-1.5 bg-gray-light"
+                  className="border border-teal/30 text-sm font-medium text-foreground px-4 py-1.5 bg-teal/5"
                 >
                   {chip}
                 </span>
@@ -65,7 +68,7 @@ export default function Hero() {
                 <MaritimePattern />
               </div>
               {/* Circular frame */}
-              <div className="absolute inset-0 rounded-full border-2 border-dpa-border bg-gray-light flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 rounded-full border-2 border-teal bg-gray-light flex items-center justify-center overflow-hidden">
                 <ProfessionalSilhouette />
               </div>
             </div>
@@ -91,11 +94,8 @@ function ProfessionalSilhouette() {
       className="w-56 h-56 text-navy opacity-30"
       fill="currentColor"
     >
-      {/* Head */}
       <ellipse cx="100" cy="68" rx="28" ry="32" />
-      {/* Shoulders / body */}
       <path d="M40 160 C40 120 70 108 100 108 C130 108 160 120 160 160 L160 200 L40 200 Z" />
-      {/* Uniform collar detail */}
       <path
         d="M85 108 L100 130 L115 108"
         fill="none"
@@ -113,7 +113,6 @@ function MaritimePattern() {
       className="w-full h-full text-teal"
       fill="currentColor"
     >
-      {/* Anchors repeated */}
       {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
         const col = i % 3;
         const row = Math.floor(i / 3);
@@ -121,13 +120,9 @@ function MaritimePattern() {
         const y = 60 + row * 140;
         return (
           <g key={i} transform={`translate(${x - 20},${y - 28})`}>
-            {/* Anchor ring */}
             <circle cx="20" cy="8" r="6" fill="none" stroke="currentColor" strokeWidth="3" />
-            {/* Anchor shaft */}
             <line x1="20" y1="14" x2="20" y2="48" stroke="currentColor" strokeWidth="3" />
-            {/* Anchor crossbar */}
             <line x1="8" y1="22" x2="32" y2="22" stroke="currentColor" strokeWidth="3" />
-            {/* Anchor flukes */}
             <path d="M8 48 Q2 44 4 38" fill="none" stroke="currentColor" strokeWidth="3" />
             <path d="M32 48 Q38 44 36 38" fill="none" stroke="currentColor" strokeWidth="3" />
             <line x1="4" y1="48" x2="36" y2="48" stroke="currentColor" strokeWidth="3" />

@@ -42,7 +42,7 @@ export default function CaseStudies() {
           {CASES.map((c) => (
             <div
               key={c.clientType}
-              className="bg-background border border-dpa-border p-8 flex flex-col"
+              className="bg-background border border-dpa-border p-10 flex flex-col"
             >
               <div className="mb-6">
                 <span className="text-xs font-bold text-teal uppercase tracking-widest">
@@ -62,10 +62,10 @@ export default function CaseStudies() {
               </div>
 
               <div className="mt-auto pt-6 border-t border-dpa-border">
-                <span className="text-xs font-bold text-teal uppercase tracking-widest">
+                <span className="inline-block bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 mb-2">
                   Key Result
                 </span>
-                <p className="text-foreground font-medium text-sm leading-relaxed mt-2">
+                <p className="text-foreground font-medium text-sm leading-relaxed mt-1">
                   {c.result}
                 </p>
               </div>
@@ -76,7 +76,7 @@ export default function CaseStudies() {
         <div className="text-center">
           <a
             href="/case-studies"
-            className="inline-flex items-center text-teal font-semibold text-sm hover:text-teal-hover transition-colors"
+            className="inline-flex items-center border border-teal text-teal font-semibold text-sm px-6 py-2.5 hover:bg-teal hover:text-white transition-colors"
           >
             View Case Studies →
           </a>

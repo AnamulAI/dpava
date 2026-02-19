@@ -35,25 +35,25 @@ export default function SolutionFramework() {
           <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-3">
             Our Methodology
           </p>
-          <h2 className="text-white text-3xl md:text-4xl font-bold">
+          <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight">
             Our Audit-Ready Compliance System™
           </h2>
         </div>
 
         <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-0">
           {STEPS.map((step, idx) => (
-            <div key={step.step} className="relative flex flex-col items-start p-8 border border-white/10">
-              {/* Connector line (desktop) */}
+            <div
+              key={step.step}
+              className={`relative flex flex-col items-start p-8 border-t border-b border-l border-white/10 ${
+                idx === STEPS.length - 1 ? "border-r border-white/10" : "border-r border-white/10"
+              }`}
+            >
+              {/* Vertical divider accent for non-last items (desktop) */}
               {idx < STEPS.length - 1 && (
-                <div className="hidden lg:block absolute right-0 top-12 w-0 h-0 z-10">
-                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 flex items-center">
-                    <div className="h-px w-6 bg-teal" />
-                    <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-teal" />
-                  </div>
-                </div>
+                <div className="hidden lg:block absolute right-0 top-8 bottom-8 w-px bg-white/15 z-10" />
               )}
 
-              <div className="text-teal mb-5">{step.icon}</div>
+              <div className="text-teal-hover mb-5">{step.icon}</div>
               <span className="text-white/30 text-xs font-bold tracking-widest uppercase mb-1">
                 Step {step.step}
               </span>
