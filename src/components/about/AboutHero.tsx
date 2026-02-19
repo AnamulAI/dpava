@@ -1,8 +1,6 @@
-import { ArrowRight } from "lucide-react";
-
 const PROOF_CHIPS = [
-  "8+ Years Marine Support Experience",
-  "26+ Vessels Supported",
+  "8+ Years Maritime Experience",
+  "Supported 26+ Vessels",
   "24/7 Support Availability",
 ];
 
@@ -14,14 +12,18 @@ export default function AboutHero() {
           {/* Left */}
           <div>
             <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-4">
-              About Us
+              About
             </p>
-            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.1] mb-8 max-w-lg">
-              About DPA Virtual Assistant
+            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.1] mb-4 max-w-lg">
+              N. Shahdat
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-[540px]">
-              Professional remote support for marine compliance, certification
-              management, and audit readiness.
+            <p className="text-teal text-base font-semibold mb-6 tracking-wide">
+              Maritime Compliance &amp; Certification Support Specialist
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-[540px]">
+              Hi, I'm N. Shahdat — a maritime professional with over 8 years of
+              experience supporting vessel operations, certification management,
+              audit documentation, and compliance workflows.
             </p>
 
             {/* Proof chips */}
@@ -37,7 +39,7 @@ export default function AboutHero() {
             </div>
           </div>
 
-          {/* Right — Silhouette + maritime pattern */}
+          {/* Right — Circular headshot placeholder */}
           <div className="flex justify-center items-center">
             <div className="relative w-72 h-72 md:w-80 md:h-80">
               {/* Maritime background pattern */}

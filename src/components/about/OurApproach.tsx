@@ -5,7 +5,7 @@ const COLUMNS = [
     icon: <LayoutGrid size={32} />,
     title: "Structured Systems",
     description:
-      "We implement organised tracking and reporting workflows so that no deadline, certificate, or audit action falls through the cracks.",
+      "I implement organised tracking and reporting workflows so that no deadline, certificate, or audit action falls through the cracks.",
   },
   {
     icon: <Bell size={32} />,
@@ -27,10 +27,10 @@ export default function OurApproach() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-3">
-            Our Approach
+            My Approach
           </p>
           <h2 className="text-white text-3xl md:text-4xl font-bold tracking-tight">
-            How We Work
+            How I Work
           </h2>
         </div>
 
@@ -40,11 +40,9 @@ export default function OurApproach() {
               key={col.title}
               className="relative flex flex-col items-start p-8 border border-white/10 transition-colors duration-200 hover:border-teal/40 hover:bg-white/[0.02]"
             >
-              {/* Vertical divider on non-last columns (desktop) */}
               {idx < COLUMNS.length - 1 && (
                 <div className="hidden lg:block absolute right-0 top-8 bottom-8 w-px bg-white/15 z-10" />
               )}
-
               <div className="text-teal-hover mb-5 [&>svg]:w-8 [&>svg]:h-8">
                 {col.icon}
               </div>
