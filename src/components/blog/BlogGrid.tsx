@@ -1,41 +1,4 @@
-const ARTICLES = [
-  {
-    title: "Certificate Tracking Best Practices for Multi-Vessel Fleets",
-    excerpt:
-      "Centralized tracking reduces certificate lapses and supports structured renewal workflows across flag states.",
-    category: "Certification Tracking",
-  },
-  {
-    title: "Understanding PSC Inspection Triggers and Documentation Requirements",
-    excerpt:
-      "A practical overview of common PSC focus areas and how structured documentation control can reduce detention risk.",
-    category: "PSC Inspection",
-  },
-  {
-    title: "SMS Revision Workflow: Aligning Procedures with Current ISM Code",
-    excerpt:
-      "Step-by-step guidance on reviewing, updating, and tracking amendments to your Safety Management System documentation.",
-    category: "SMS / ISM",
-  },
-  {
-    title: "Audit Checklist: Pre-Inspection Documentation Review",
-    excerpt:
-      "A structured checklist for verifying document completeness, currency, and accessibility before scheduled audits.",
-    category: "Audit Preparation",
-  },
-  {
-    title: "Vessel Takeover Compliance: Key Documentation Steps",
-    excerpt:
-      "Essential compliance documentation tasks when onboarding a vessel under new management, from handover to operational readiness.",
-    category: "Operational Compliance",
-  },
-  {
-    title: "Managing Equipment Service Records for Class Survey Readiness",
-    excerpt:
-      "How to organize LSA, FFA, and critical equipment service records to ensure smooth class survey outcomes.",
-    category: "Certification Tracking",
-  },
-];
+import { ARTICLES } from "@/data/articles";
 
 interface BlogGridProps {
   activeCategory: string;
@@ -57,9 +20,9 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
 
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filtered.map((article, idx) => (
+      {filtered.map((article) => (
         <article
-          key={idx}
+          key={article.slug}
           className="bg-background border border-dpa-border flex flex-col"
         >
           {/* Image placeholder */}
@@ -84,7 +47,7 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
               {article.excerpt}
             </p>
             <a
-              href="#"
+              href={`/blog/${article.slug}`}
               className="text-teal text-xs font-semibold uppercase tracking-widest hover:underline"
             >
               Read Article →
