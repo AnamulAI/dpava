@@ -44,16 +44,14 @@ export default function SolutionFramework() {
           {STEPS.map((step, idx) => (
             <div
               key={step.step}
-              className={`relative flex flex-col items-start p-8 border-t border-b border-l border-white/10 ${
-                idx === STEPS.length - 1 ? "border-r border-white/10" : "border-r border-white/10"
-              }`}
+              className={`relative flex flex-col items-start p-8 border-t border-b border-l border-white/10 border-r border-white/10 transition-colors duration-200 hover:border-teal/40 hover:bg-white/[0.02]`}
             >
               {/* Vertical divider accent for non-last items (desktop) */}
               {idx < STEPS.length - 1 && (
                 <div className="hidden lg:block absolute right-0 top-8 bottom-8 w-px bg-white/15 z-10" />
               )}
 
-              <div className="text-teal-hover mb-5">{step.icon}</div>
+              <div className="text-teal-hover mb-5 [&>svg]:w-8 [&>svg]:h-8">{step.icon}</div>
               <span className="text-white/30 text-xs font-bold tracking-widest uppercase mb-1">
                 Step {step.step}
               </span>

@@ -39,17 +39,17 @@ export default function Testimonials() {
           {TESTIMONIALS.map((t) => (
             <div
               key={t.name}
-              className="bg-navy-deep border border-white/10 border-l-4 border-l-teal p-8 flex flex-col"
+              className="bg-navy-deep border border-white/10 border-l-4 border-l-teal p-9 flex flex-col"
             >
               {/* Decorative quotation mark */}
-              <div className="text-6xl text-teal/30 font-serif leading-none mb-2 select-none">
+              <div className="text-7xl text-teal/30 font-serif leading-none mb-3 select-none">
                 "
               </div>
-              <p className="text-white/80 text-base leading-relaxed mb-8 flex-1 italic">
+              <p className="text-white/80 text-[1.0625rem] leading-relaxed mb-8 flex-1 italic">
                 "{t.quote}"
               </p>
               <div className="border-t border-white/10 pt-5">
-                <p className="text-white font-bold text-sm">{t.name}</p>
+                <p className="text-white font-[600] text-sm">{t.name}</p>
                 <p className="text-white/50 text-xs mt-1">{t.role}</p>
                 <p className="text-teal text-xs mt-0.5 font-medium">{t.country}</p>
               </div>

@@ -17,7 +17,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-navy-deep text-white border-t-2 border-teal/20">
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-6 py-20">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 space-y-2">
-          <p className="text-white/50 text-xs text-center tracking-wide">
+          <p className="text-white/60 text-xs text-center tracking-wide">
             Serving Globally | 24/7 Support
           </p>
           <p className="text-white/40 text-xs text-center">

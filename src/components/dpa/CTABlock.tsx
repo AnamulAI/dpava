@@ -12,12 +12,12 @@ export default function CTABlock() {
         <h2 className="text-navy text-3xl md:text-4xl font-bold mb-5">
           Ready to Simplify Fleet Compliance?
         </h2>
-        <p className="text-muted-foreground text-base leading-relaxed mb-10">
+        <p className="text-muted-foreground text-base leading-[1.8] mb-10">
           Send your vessel count and service requirements. We'll respond with a
           tailored compliance plan within 24 hours — no commitment required.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-6">
           <a
             href={WA_LINK}
             target="_blank"
