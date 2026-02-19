@@ -13,7 +13,7 @@ export default function BlogPostAuthor() {
               About the Author
             </p>
             <h3 className="text-navy font-bold text-lg mb-2">N. Shahdat</h3>
-            <p className="text-muted-foreground text-sm leading-[1.8] mb-3">
+            <p className="text-muted-foreground text-sm leading-[1.8] mb-4">
               Maritime compliance professional with an MBA in Operations &amp;
               Supply Chain, an LL.M in Maritime Law, and an LL.B. Certified
               through Lloyd's Maritime Institute and London Port Academy.
@@ -22,7 +22,15 @@ export default function BlogPostAuthor() {
               Superintendents, and ship management organizations.
             </p>
             <div className="flex flex-wrap gap-2">
-              {["MBA Operations", "LL.M Maritime Law", "Lloyd's Certified"].map((tag) => (
+              {[
+                "MBA Operations",
+                "LL.M Maritime Law",
+                "Lloyd's Certified",
+                "ISM Auditing",
+                "PSC Preparation",
+                "SMS Documentation",
+                "Certificate Management",
+              ].map((tag) => (
                 <span
                   key={tag}
                   className="border border-dpa-border text-muted-foreground text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5"

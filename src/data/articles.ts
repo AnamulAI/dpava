@@ -5,6 +5,7 @@ export interface Article {
   category: string;
   date: string;
   readTime: string;
+  takeaway: string;
 }
 
 export const ARTICLES: Article[] = [
@@ -16,6 +17,7 @@ export const ARTICLES: Article[] = [
     category: "Audit Preparation",
     date: "January 15, 2026",
     readTime: "8 min read",
+    takeaway: "Start audit prep 90 days in advance with a structured documentation checklist.",
   },
   {
     slug: "certificate-tracking-best-practices",
@@ -25,6 +27,7 @@ export const ARTICLES: Article[] = [
     category: "Certification Tracking",
     date: "January 8, 2026",
     readTime: "6 min read",
+    takeaway: "Centralized registers with 90/60/30-day alerts prevent costly lapses.",
   },
   {
     slug: "psc-inspection-triggers",
@@ -34,6 +37,7 @@ export const ARTICLES: Article[] = [
     category: "PSC Inspection",
     date: "December 28, 2025",
     readTime: "7 min read",
+    takeaway: "Focus on the top 5 PSC detention triggers to reduce inspection risk by over 60%.",
   },
   {
     slug: "sms-revision-workflow",
@@ -43,6 +47,7 @@ export const ARTICLES: Article[] = [
     category: "SMS / ISM",
     date: "December 15, 2025",
     readTime: "9 min read",
+    takeaway: "Schedule SMS reviews quarterly — not just annually — for continuous compliance.",
   },
   {
     slug: "audit-checklist-pre-inspection",
@@ -52,6 +57,7 @@ export const ARTICLES: Article[] = [
     category: "Audit Preparation",
     date: "December 5, 2025",
     readTime: "5 min read",
+    takeaway: "Use a 48-hour pre-inspection window to verify all folders and certificate validity.",
   },
   {
     slug: "vessel-takeover-compliance",
@@ -61,6 +67,7 @@ export const ARTICLES: Article[] = [
     category: "Operational Compliance",
     date: "November 22, 2025",
     readTime: "7 min read",
+    takeaway: "Complete handover documentation within the first 14 days to avoid compliance gaps.",
   },
   {
     slug: "equipment-service-records",
@@ -70,5 +77,6 @@ export const ARTICLES: Article[] = [
     category: "Certification Tracking",
     date: "November 10, 2025",
     readTime: "6 min read",
+    takeaway: "Cross-reference service records against class survey due dates monthly.",
   },
 ];

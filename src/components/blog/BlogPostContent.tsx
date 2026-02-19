@@ -16,7 +16,7 @@ export default function BlogPostContent() {
           </div>
         </div>
 
-        {/* Article body — structured placeholder content */}
+        {/* Article body */}
         <article className="prose-dpa">
           <p className="text-foreground text-base md:text-lg leading-[1.9] mb-8">
             Effective maritime compliance depends on disciplined documentation control,
@@ -25,7 +25,31 @@ export default function BlogPostContent() {
             audit-ready documentation across vessel operations.
           </p>
 
-          <h2 className="text-navy text-2xl md:text-[1.7rem] font-bold mb-4 mt-12">
+          {/* Table of Contents */}
+          <div className="border border-dpa-border bg-gray-light p-6 mb-12">
+            <p className="text-navy font-bold text-sm uppercase tracking-widest mb-4">
+              Table of Contents
+            </p>
+            <ol className="space-y-2 text-sm list-decimal list-inside">
+              <li>
+                <a href="#foundation" className="text-teal hover:underline">The Foundation of Compliance Documentation</a>
+              </li>
+              <li>
+                <a href="#certificate-tracking" className="text-teal hover:underline">Certificate Tracking and Renewal Management</a>
+              </li>
+              <li>
+                <a href="#sms-alignment" className="text-teal hover:underline">SMS Documentation Alignment</a>
+              </li>
+              <li>
+                <a href="#amendment-tracking" className="text-teal hover:underline">Amendment Tracking Best Practices</a>
+              </li>
+              <li>
+                <a href="#pre-inspection" className="text-teal hover:underline">Pre-Inspection Preparation</a>
+              </li>
+            </ol>
+          </div>
+
+          <h2 id="foundation" className="text-navy text-2xl md:text-[1.7rem] font-bold mb-4 mt-12">
             The Foundation of Compliance Documentation
           </h2>
           <p className="text-foreground text-base leading-[1.9] mb-6">
@@ -36,7 +60,15 @@ export default function BlogPostContent() {
             workflows to maintain effectiveness.
           </p>
 
-          <h3 className="text-navy text-xl font-bold mb-3 mt-10">
+          {/* Regulatory reference */}
+          <div className="flex items-start gap-3 bg-background border border-dpa-border px-5 py-4 mb-6">
+            <span className="text-teal text-xs font-bold uppercase tracking-widest shrink-0 mt-0.5">Ref:</span>
+            <p className="text-muted-foreground text-xs leading-[1.7]">
+              ISM Code, Section 11 — Documentation. IMO Resolution A.1071(28) on procedures for Port State Control.
+            </p>
+          </div>
+
+          <h3 id="certificate-tracking" className="text-navy text-xl font-bold mb-3 mt-10">
             Certificate Tracking and Renewal Management
           </h3>
           <p className="text-foreground text-base leading-[1.9] mb-6">
@@ -78,7 +110,15 @@ export default function BlogPostContent() {
             </p>
           </div>
 
-          <h2 className="text-navy text-2xl md:text-[1.7rem] font-bold mb-4 mt-12">
+          {/* Regulatory reference */}
+          <div className="flex items-start gap-3 bg-background border border-dpa-border px-5 py-4 mb-8">
+            <span className="text-teal text-xs font-bold uppercase tracking-widest shrink-0 mt-0.5">Ref:</span>
+            <p className="text-muted-foreground text-xs leading-[1.7]">
+              SOLAS Chapter I, Regulation 12 — Certificates. Paris MoU on Port State Control, Annex 11.
+            </p>
+          </div>
+
+          <h2 id="sms-alignment" className="text-navy text-2xl md:text-[1.7rem] font-bold mb-4 mt-12">
             SMS Documentation Alignment
           </h2>
           <p className="text-foreground text-base leading-[1.9] mb-6">
@@ -88,7 +128,7 @@ export default function BlogPostContent() {
             consistency across all SMS sections.
           </p>
 
-          <h3 className="text-navy text-xl font-bold mb-3 mt-10">
+          <h3 id="amendment-tracking" className="text-navy text-xl font-bold mb-3 mt-10">
             Amendment Tracking Best Practices
           </h3>
           <p className="text-foreground text-base leading-[1.9] mb-6">
@@ -97,6 +137,14 @@ export default function BlogPostContent() {
             that demonstrates continuous improvement and regulatory responsiveness
             during ISM audits.
           </p>
+
+          {/* Regulatory reference */}
+          <div className="flex items-start gap-3 bg-background border border-dpa-border px-5 py-4 mb-6">
+            <span className="text-teal text-xs font-bold uppercase tracking-widest shrink-0 mt-0.5">Ref:</span>
+            <p className="text-muted-foreground text-xs leading-[1.7]">
+              ISM Code, Section 1.4 — Functional requirements. MSC-MEPC.7/Circ.8 on Guidelines for the Operational Implementation of the ISM Code.
+            </p>
+          </div>
 
           <ul className="space-y-3 mb-8 pl-0">
             <li className="text-foreground text-base leading-[1.8] flex gap-3">
@@ -113,7 +161,7 @@ export default function BlogPostContent() {
             </li>
           </ul>
 
-          {/* Second highlight box */}
+          {/* Key takeaway box */}
           <div className="border-l-[4px] border-teal bg-gray-light px-6 py-5 mb-8">
             <p className="text-navy font-bold text-sm uppercase tracking-widest mb-2">
               Key Takeaway
@@ -126,7 +174,7 @@ export default function BlogPostContent() {
             </p>
           </div>
 
-          <h2 className="text-navy text-2xl md:text-[1.7rem] font-bold mb-4 mt-12">
+          <h2 id="pre-inspection" className="text-navy text-2xl md:text-[1.7rem] font-bold mb-4 mt-12">
             Pre-Inspection Preparation
           </h2>
           <p className="text-foreground text-base leading-[1.9] mb-8">
@@ -138,6 +186,67 @@ export default function BlogPostContent() {
             reduce operational stress for both shore and vessel teams.
           </p>
         </article>
+
+        {/* Downloadable Checklist Block */}
+        <div className="border-2 border-teal bg-gray-light p-8 mt-12">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <div className="w-14 h-14 shrink-0 bg-teal/10 border border-teal flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-teal">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+                <path d="M14 2v6h6" />
+                <path d="m9 15 2 2 4-4" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <p className="text-navy font-bold text-base mb-1">
+                Download: Pre-Inspection Documentation Checklist
+              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                A structured, printable checklist covering certificate verification, SMS folder review,
+                and crew familiarization steps — ready for your next audit or inspection.
+              </p>
+              <button className="inline-flex items-center gap-2 bg-teal text-white text-xs font-semibold uppercase tracking-widest px-5 py-2.5 hover:bg-teal-hover transition-colors">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download Checklist (PDF)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Related FAQs */}
+        <div className="mt-16 border-t border-dpa-border pt-12">
+          <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-3">
+            Frequently Asked Questions
+          </p>
+          <h3 className="text-navy text-xl md:text-2xl font-bold mb-8">
+            Related Questions
+          </h3>
+          <div className="space-y-6">
+            {[
+              {
+                q: "How far in advance should I prepare for an ISM audit?",
+                a: "Best practice is to begin structured preparation at least 90 days before the scheduled audit date. This allows sufficient time for document review, certificate verification, and crew familiarization with updated procedures.",
+              },
+              {
+                q: "What are the most common reasons for PSC detentions related to documentation?",
+                a: "The top causes include expired certificates, outdated SMS procedures, missing or incomplete drill records, and failure to demonstrate compliance with ISM Code Sections 10 and 11 on documentation and verification.",
+              },
+              {
+                q: "How often should SMS procedures be reviewed and updated?",
+                a: "The ISM Code requires periodic review, but best practice recommends quarterly internal reviews with a formal annual audit. Any regulatory change (IMO circular, flag state notice) should trigger an immediate review of affected procedures.",
+              },
+            ].map((faq, i) => (
+              <div key={i} className="border border-dpa-border p-6">
+                <p className="text-navy font-bold text-sm mb-2">{faq.q}</p>
+                <p className="text-muted-foreground text-sm leading-[1.8]">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

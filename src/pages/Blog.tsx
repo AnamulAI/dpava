@@ -5,6 +5,7 @@ import BlogHero from "@/components/blog/BlogHero";
 import BlogFeatured from "@/components/blog/BlogFeatured";
 import BlogGrid from "@/components/blog/BlogGrid";
 import BlogCTA from "@/components/blog/BlogCTA";
+import { ARTICLES } from "@/data/articles";
 
 const CATEGORIES = [
   "All",
@@ -14,6 +15,11 @@ const CATEGORIES = [
   "PSC Inspection",
   "Operational Compliance",
 ];
+
+function getCategoryCount(cat: string): number {
+  if (cat === "All") return ARTICLES.length;
+  return ARTICLES.filter((a) => a.category === cat).length;
+}
 
 const Blog = () => {
   const [active, setActive] = useState("All");
@@ -39,6 +45,7 @@ const Blog = () => {
                   }`}
                 >
                   {cat}
+                  <span className="ml-2 opacity-60">({getCategoryCount(cat)})</span>
                 </button>
               ))}
             </div>
