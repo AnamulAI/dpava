@@ -36,7 +36,7 @@ export default function Qualifications() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-16">
             {/* Academic */}
             <div className="border border-dpa-border p-8">
               <div className="flex items-center gap-2 mb-6">
@@ -96,7 +96,7 @@ export default function Qualifications() {
             {CAPABILITIES.map((item) => (
               <div
                 key={item}
-                className="bg-background px-8 py-7 flex items-start gap-4"
+                className="bg-background px-10 py-9 flex items-start gap-4"
               >
                 <CheckCircle size={16} className="text-teal mt-0.5 shrink-0" />
                 <span className="text-navy text-sm font-medium leading-snug">

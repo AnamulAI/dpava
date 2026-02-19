@@ -20,7 +20,7 @@ export default function ConfidentialityTrust() {
           industry standards.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-8">
           <a
             href={WA_LINK}
             target="_blank"

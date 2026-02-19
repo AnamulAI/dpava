@@ -32,7 +32,7 @@ export default function ShippingCompanies() {
             {COMPANIES.map((company) => (
               <div
                 key={company.name}
-                className="flex flex-col items-center justify-center px-16 py-6"
+                className="flex flex-col items-center justify-center px-20 py-8"
               >
                 {/* Monochrome navy logotype treatment */}
                 <span className="text-navy font-bold text-2xl tracking-[0.12em] uppercase opacity-60 select-none">
@@ -47,7 +47,7 @@ export default function ShippingCompanies() {
         </div>
 
         {/* Disclaimer */}
-        <p className="text-center text-muted-foreground text-xs mt-4 max-w-xl mx-auto leading-relaxed">
+        <p className="text-center text-muted-foreground text-[10px] mt-4 max-w-xl mx-auto leading-relaxed">
           Logos displayed for reference of professional association and support
           experience.
         </p>

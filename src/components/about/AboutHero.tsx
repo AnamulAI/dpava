@@ -17,8 +17,11 @@ export default function AboutHero() {
             <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.1] mb-4 max-w-lg">
               N. Shahdat
             </h1>
-            <p className="text-teal text-base font-semibold mb-6 tracking-wide">
+            <p className="text-teal text-base font-semibold mb-2 tracking-wide">
               Maritime Compliance &amp; Certification Support Specialist
+            </p>
+            <p className="text-muted-foreground text-sm mb-6 tracking-wide">
+              Based in Bangladesh | Supporting Global Maritime Operations
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-[540px]">
               Hi, I'm N. Shahdat — a maritime professional with over 8 years of

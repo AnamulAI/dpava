@@ -46,9 +46,9 @@ export default function ProfessionalBackground() {
             {EXPERIENCE_BLOCKS.map((block) => (
               <div
                 key={block.heading}
-                className="border-l-2 border-teal pl-5"
+                className="border-l-[3px] border-teal pl-5"
               >
-                <h3 className="text-navy font-bold text-base mb-2">
+                <h3 className="text-navy font-extrabold text-base mb-2">
                   {block.heading}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-[1.8]">

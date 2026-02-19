@@ -25,12 +25,15 @@ export default function RegulatoryFramework() {
         <div className="grid md:grid-cols-2 gap-16 items-start">
           {/* Left — paragraph */}
           <div>
-            <p className="text-muted-foreground text-base leading-[1.8] mb-6">
+            <p className="text-muted-foreground text-base leading-[1.8] mb-5">
               My compliance support work is grounded in direct familiarity with
               the international regulatory frameworks that govern vessel
-              operations. I work within these standards daily — not as a
-              statutory authority, but as a structured administrative specialist
-              who understands how requirements translate into operational
+              operations.
+            </p>
+            <p className="text-muted-foreground text-base leading-[1.8] mb-5">
+              I work within these standards daily — not as a statutory
+              authority, but as a structured administrative specialist who
+              understands how requirements translate into operational
               documentation.
             </p>
             <p className="text-muted-foreground text-base leading-[1.8]">
@@ -41,7 +44,7 @@ export default function RegulatoryFramework() {
           </div>
 
           {/* Right — structured framework list */}
-          <div className="border border-dpa-border bg-background p-8">
+          <div className="border border-[#C5CDD8] bg-background p-8">
             <div className="flex items-center gap-2 mb-6">
               <BookOpen size={16} className="text-teal" />
               <p className="text-teal text-xs font-bold uppercase tracking-widest">
