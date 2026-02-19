@@ -1,25 +1,43 @@
 import { ArrowRight } from "lucide-react";
+import heroBg from "@/assets/services-hero-bg.jpg";
 
 const WA_LINK = "https://wa.me/88017414688828";
 
 export default function ServicesHero() {
   return (
-    <section className="bg-background py-20 md:py-28 border-b border-dpa-border">
-      <div className="container mx-auto px-6">
+    <section
+      className="relative py-20 md:py-28 border-b border-dpa-border overflow-hidden"
+    >
+      {/* Background image with blur */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          filter: "blur(12px)",
+          transform: "scale(1.05)",
+        }}
+      />
+      {/* Deep navy overlay */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(11,31,59,0.78)" }}
+      />
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           {/* Left — Text */}
           <div>
             <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-5">
               Services
             </p>
-            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.1] mb-5 max-w-lg">
+            <h1 className="text-white text-4xl md:text-5xl font-bold leading-[1.1] mb-5 max-w-lg">
               Maritime Compliance Support Services
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-[540px]">
+            <p className="text-white/70 text-lg leading-relaxed mb-4 max-w-[540px]">
               Structured administrative and compliance support tailored for DPAs
               and Marine Superintendents.
             </p>
-            <p className="text-muted-foreground text-base leading-[1.8] mb-10 max-w-[480px]">
+            <p className="text-white/55 text-base leading-[1.8] mb-10 max-w-[480px]">
               Choose the level of support that fits your fleet's compliance and
               operational requirements.
             </p>
@@ -37,7 +55,7 @@ export default function ServicesHero() {
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center border border-navy text-navy font-semibold px-7 py-3 hover:bg-navy hover:text-white transition-colors text-sm"
+                className="inline-flex items-center border border-white/40 text-white font-semibold px-7 py-3 hover:border-white hover:bg-white/10 transition-colors text-sm"
               >
                 Contact Page
               </a>
@@ -45,7 +63,7 @@ export default function ServicesHero() {
           </div>
 
           {/* Right — Stat card */}
-          <div className="border border-[#E2E8F0] p-10 flex flex-col gap-8">
+          <div className="border border-white/20 p-10 flex flex-col gap-8 bg-white/5">
             {[
               {
                 value: "3",
@@ -70,10 +88,10 @@ export default function ServicesHero() {
                   </span>
                 </div>
                 <div>
-                  <p className="text-navy font-bold text-sm mb-1">
+                  <p className="text-white font-bold text-sm mb-1">
                     {stat.label}
                   </p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-white/55 text-sm leading-relaxed">
                     {stat.desc}
                   </p>
                 </div>
