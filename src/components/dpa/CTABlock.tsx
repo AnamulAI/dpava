@@ -1,14 +1,16 @@
+import { ArrowRight } from "lucide-react";
+
 const WA_LINK = "https://wa.me/88017414688828";
 
 export default function CTABlock() {
   return (
-    <section className="bg-gray-light py-20 md:py-24 border-b border-dpa-border">
+    <section className="bg-gray-light py-24 md:py-32 border-b border-dpa-border">
       <div className="container mx-auto px-6 text-center max-w-2xl">
         <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-4">
           Get Started
         </p>
         <h2 className="text-navy text-3xl md:text-4xl font-bold mb-5">
-          Need Reliable Compliance Support for Your Fleet?
+          Ready to Simplify Fleet Compliance?
         </h2>
         <p className="text-muted-foreground text-base leading-relaxed mb-10">
           Send your vessel count and service requirements. We'll respond with a
@@ -20,10 +22,11 @@ export default function CTABlock() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-8 py-3.5 hover:bg-teal-hover transition-colors text-sm"
+            className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-10 py-4 hover:bg-teal-hover transition-colors text-base"
           >
             <WhatsAppIcon />
             WhatsApp Now
+            <ArrowRight size={16} />
           </a>
           <a
             href="/contact"

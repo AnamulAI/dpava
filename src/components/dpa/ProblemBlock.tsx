@@ -2,25 +2,25 @@ import { AlertTriangle, Clock, Anchor, FileText } from "lucide-react";
 
 const PROBLEMS = [
   {
-    icon: <AlertTriangle size={24} />,
+    icon: <AlertTriangle size={32} />,
     title: "Expiring Certificates",
     description:
       "Certificate renewals missed due to poor tracking risk flag state detentions and PSC inspection delays.",
   },
   {
-    icon: <FileText size={24} />,
+    icon: <FileText size={32} />,
     title: "Audit Documentation Burden",
     description:
       "Preparing SMS, ISM records, and drill logs for vetting inspections consumes disproportionate crew time.",
   },
   {
-    icon: <Anchor size={24} />,
+    icon: <Anchor size={32} />,
     title: "LSA/FFA Coordination",
     description:
       "Managing life-saving and fire-fighting appliance service schedules across multiple vendors is complex and error-prone.",
   },
   {
-    icon: <Clock size={24} />,
+    icon: <Clock size={32} />,
     title: "SMS/ISM Update Backlog",
     description:
       "Continuous ISM amendments, circulars, and flag updates pile up and rarely get addressed proactively.",
@@ -41,10 +41,10 @@ export default function ProblemBlock() {
           {PROBLEMS.map((p) => (
             <div
               key={p.title}
-              className="bg-background border border-dpa-border p-6"
+              className="bg-background border border-[#E2E8F0] p-8"
             >
-              <div className="text-teal mb-4">{p.icon}</div>
-              <h3 className="text-navy font-semibold text-base mb-2">
+              <div className="text-teal mb-5">{p.icon}</div>
+              <h3 className="text-navy font-semibold text-base mb-3">
                 {p.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">

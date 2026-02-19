@@ -67,14 +67,20 @@ export default function ServicesPreview() {
               key={svc.title}
               className={`border p-8 flex flex-col ${
                 svc.highlight
-                  ? "border-teal border-2"
+                  ? "border-teal bg-teal/[0.03]"
                   : "border-dpa-border"
               }`}
+              style={svc.highlight ? { borderWidth: "3px" } : undefined}
             >
-              {/* Badge */}
-              <div className="h-6 mb-5">
+              {/* Badge row */}
+              <div className="h-7 mb-5 flex gap-2 items-center">
+                {svc.highlight && (
+                  <span className="bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1">
+                    Most Popular
+                  </span>
+                )}
                 {svc.badge && (
-                  <span className="bg-teal text-white text-xs font-bold uppercase tracking-widest px-3 py-1">
+                  <span className="bg-navy text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1">
                     {svc.badge}
                   </span>
                 )}
