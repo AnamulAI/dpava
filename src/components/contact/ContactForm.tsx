@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const WA_LINK = "https://wa.me/88017414688828";
 
@@ -32,8 +33,23 @@ export default function ContactForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // Save to Supabase for CRM / admin use
+    try {
+      await supabase.from("contact_submissions").insert({
+        full_name: form.fullName,
+        email: form.email,
+        company_name: form.company || null,
+        vessel_count: form.vesselCount ? parseInt(form.vesselCount, 10) || null : null,
+        service_needed: form.service || null,
+        message: form.message,
+      });
+    } catch {
+      // Silently continue — WhatsApp is the primary delivery
+    }
+
     // Build WhatsApp message as fallback delivery
     const text = encodeURIComponent(
       `*Support Request*\nName: ${form.fullName}\nEmail: ${form.email}\nCompany: ${form.company || "N/A"}\nVessels: ${form.vesselCount}\nService: ${form.service}\n\n${form.message}`
