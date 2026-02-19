@@ -1,12 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/dpa/Header";
+import Hero from "@/components/dpa/Hero";
+import ProblemBlock from "@/components/dpa/ProblemBlock";
+import SolutionFramework from "@/components/dpa/SolutionFramework";
+import ServicesPreview from "@/components/dpa/ServicesPreview";
+import CaseStudies from "@/components/dpa/CaseStudies";
+import Testimonials from "@/components/dpa/Testimonials";
+import CTABlock from "@/components/dpa/CTABlock";
+import Footer from "@/components/dpa/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen font-sans">
+      <Header />
+      <main>
+        <Hero />
+        <ProblemBlock />
+        <SolutionFramework />
+        <ServicesPreview />
+        <CaseStudies />
+        <Testimonials />
+        <CTABlock />
+      </main>
+      <Footer />
     </div>
   );
 };
