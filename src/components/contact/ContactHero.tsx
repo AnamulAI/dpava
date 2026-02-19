@@ -37,15 +37,15 @@ export default function ContactHero() {
 
           {/* Contact method cards */}
           <div className="grid sm:grid-cols-2 gap-4 max-w-xl mb-10">
-            {/* WhatsApp */}
-            <div className="border border-white/20 bg-white/5 p-6">
-              <p className="text-white/50 text-xs uppercase tracking-widest mb-2">
-                WhatsApp
+            {/* WhatsApp — primary channel highlighted */}
+            <div className="border border-teal/60 bg-teal/10 p-6">
+              <p className="text-teal/80 text-xs uppercase tracking-widest mb-2 font-semibold">
+                WhatsApp — Primary
               </p>
               <p className="text-teal font-semibold text-sm mb-1">
                 +880 1741 4688828
               </p>
-              <p className="text-white/50 text-xs">Fastest response channel</p>
+              <p className="text-white/60 text-xs">Fastest response channel</p>
             </div>
             {/* Email */}
             <div className="border border-white/20 bg-white/5 p-6">
@@ -60,7 +60,7 @@ export default function ContactHero() {
           </div>
 
           {/* CTA buttons */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 items-center">
             <a
               href={WA_LINK}
               target="_blank"
@@ -78,6 +78,9 @@ export default function ContactHero() {
               Send Email
             </a>
           </div>
+          <p className="text-white/40 text-xs mt-4 tracking-wide">
+            Confidential response within 24 hours.
+          </p>
         </div>
       </div>
     </section>

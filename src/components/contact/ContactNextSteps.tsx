@@ -3,16 +3,19 @@ const STEPS = [
     number: "1",
     title: "Review",
     desc: "Your request is reviewed within 24 hours.",
+    timing: "Within 24 hours",
   },
   {
     number: "2",
     title: "Clarification",
     desc: "We may request additional vessel details if needed.",
+    timing: "Within 48 hours",
   },
   {
     number: "3",
     title: "Proposal",
     desc: "A structured support plan is shared.",
+    timing: "Within 72 hours",
   },
 ];
 
@@ -38,7 +41,7 @@ export default function ContactNextSteps() {
               >
                 {/* Step number */}
                 <div className="flex items-center gap-4">
-                  <span className="text-teal text-3xl font-bold leading-none">
+                  <span className="text-teal text-5xl font-bold leading-none">
                     {step.number}
                   </span>
                   <div className="flex-1 h-px bg-dpa-border" />
@@ -46,6 +49,9 @@ export default function ContactNextSteps() {
                 <h3 className="text-navy font-bold text-base">{step.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {step.desc}
+                </p>
+                <p className="text-teal text-xs font-semibold uppercase tracking-wider border-t border-dpa-border pt-3 mt-auto">
+                  {step.timing}
                 </p>
               </div>
             ))}
