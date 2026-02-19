@@ -7,8 +7,10 @@ interface BlogGridProps {
 export default function BlogGrid({ activeCategory }: BlogGridProps) {
   const filtered =
     activeCategory === "All"
-      ? ARTICLES
-      : ARTICLES.filter((a) => a.category === activeCategory);
+      ? [...ARTICLES].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      : ARTICLES.filter((a) => a.category === activeCategory).sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
 
   if (filtered.length === 0) {
     return (
@@ -40,11 +42,19 @@ export default function BlogGrid({ activeCategory }: BlogGridProps) {
             <span className="inline-block bg-teal text-white text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 w-fit mb-3">
               {article.category}
             </span>
-            <h3 className="text-navy font-bold text-base leading-snug mb-3">
+            <h3 className="text-navy font-bold text-base leading-snug mb-2">
               {article.title}
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
+            <div className="flex items-center gap-2 text-muted-foreground text-[10px] uppercase tracking-widest font-semibold mb-3">
+              <span>{article.date}</span>
+              <span className="w-0.5 h-0.5 bg-muted-foreground/40 rounded-full" />
+              <span>{article.readTime}</span>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-3 flex-1">
               {article.excerpt}
+            </p>
+            <p className="text-navy text-xs leading-relaxed mb-4 italic border-l-2 border-teal pl-3">
+              💡 {article.takeaway}
             </p>
             <a
               href={`/blog/${article.slug}`}

@@ -1,4 +1,8 @@
+import { ARTICLES } from "@/data/articles";
+
 export default function BlogFeatured() {
+  const featured = ARTICLES[0];
+
   return (
     <section className="bg-background py-16 md:py-20 border-b border-dpa-border">
       <div className="container mx-auto px-6">
@@ -24,20 +28,22 @@ export default function BlogFeatured() {
           {/* Content */}
           <div className="p-8 md:p-12 flex flex-col justify-center">
             <span className="inline-block bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 w-fit mb-4">
-              Audit Preparation
+              {featured.category}
             </span>
             <h2 className="text-navy text-2xl md:text-3xl font-bold leading-tight mb-4">
-              Preparing for ISM Audits: A Structured Documentation Approach
+              {featured.title}
             </h2>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Audit readiness depends on disciplined documentation control. This
-              guide covers essential steps for organizing SMS procedures,
-              maintaining amendment tracking, and preparing inspection-ready
-              folders ahead of internal and external ISM audits.
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              {featured.excerpt}
             </p>
+            <div className="flex items-center gap-3 text-muted-foreground text-xs uppercase tracking-widest font-semibold mb-6">
+              <span>{featured.date}</span>
+              <span className="w-1 h-1 bg-muted-foreground/40 rounded-full" />
+              <span>{featured.readTime}</span>
+            </div>
             <div>
               <a
-                href="#"
+                href={`/blog/${featured.slug}`}
                 className="inline-flex border-2 border-teal text-teal text-xs font-semibold px-6 py-2.5 hover:bg-teal hover:text-white transition-colors"
               >
                 Read Article

@@ -9,12 +9,20 @@ export default function BlogPostHero({ article }: Props) {
   return (
     <section className="bg-navy-deep py-16 md:py-20 border-b border-dpa-border">
       <div className="container mx-auto px-6 max-w-3xl">
-        <Link
-          to="/blog"
-          className="text-white/40 text-xs font-semibold uppercase tracking-widest hover:text-white/60 transition-colors mb-8 inline-block"
-        >
-          ← Back to Blog
-        </Link>
+        {/* Breadcrumb navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center gap-2 text-white/40 text-xs font-semibold uppercase tracking-widest">
+            <li>
+              <Link to="/" className="hover:text-white/60 transition-colors">Home</Link>
+            </li>
+            <li aria-hidden="true" className="text-white/20">/</li>
+            <li>
+              <Link to="/blog" className="hover:text-white/60 transition-colors">Blog</Link>
+            </li>
+            <li aria-hidden="true" className="text-white/20">/</li>
+            <li className="text-white/60 truncate max-w-[200px]">{article.category}</li>
+          </ol>
+        </nav>
 
         <span className="inline-block bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 mb-5">
           {article.category}
