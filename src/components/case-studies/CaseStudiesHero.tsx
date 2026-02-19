@@ -103,12 +103,12 @@ export default function CaseStudiesHero() {
           Maritime Compliance Case Studies
         </h1>
         <p className="text-white/70 text-lg leading-relaxed max-w-[560px] mb-4">
-          Real-world compliance challenges and structured solutions implemented
-          across supported vessels.
+          Documented compliance engagements demonstrating structured solutions
+          delivered across vessel types, flag states, and operational contexts.
         </p>
         <p className="text-white/55 text-base leading-[1.8] max-w-[520px] mb-10">
-          Each case reflects structured administrative support, audit readiness
-          preparation, and disciplined documentation control.
+          Each case reflects disciplined administrative coordination, audit
+          readiness preparation, and systematic documentation control.
         </p>
 
         <a
@@ -124,11 +124,11 @@ export default function CaseStudiesHero() {
 
         {/* Trust chips */}
         <div className="flex flex-wrap gap-3">
-          {["3 Cases Documented", "Zero PSC Detentions", "Audit-Ready Compliance System™"].map(
+          {["Zero Certificate Lapses", "Clean Audit Reports", "Structured Documentation Control"].map(
             (chip) => (
               <span
                 key={chip}
-                className="border border-white/20 text-white/60 text-xs px-3 py-1"
+                className="border border-white/20 text-white/60 text-xs font-semibold px-3 py-1"
               >
                 {chip}
               </span>

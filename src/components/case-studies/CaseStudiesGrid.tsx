@@ -2,6 +2,7 @@ const CASES = [
   {
     clientType: "DPA — Bulk Carrier Fleet",
     fleetSize: "3 Vessels",
+    flagRef: "Panama / Marshall Islands",
     challenge:
       "Multiple expiring certificates with no centralized tracking and a short-notice PSC inspection.",
     badge: "Zero Certificate Lapses",
@@ -10,6 +11,7 @@ const CASES = [
   {
     clientType: "Marine Superintendent — Tanker Operations",
     fleetSize: "2 Vessels",
+    flagRef: "Liberia",
     challenge:
       "SMS documentation outdated, ISM checklist inconsistencies, and imminent audit pressure.",
     badge: "Clean Audit Report",
@@ -18,6 +20,7 @@ const CASES = [
   {
     clientType: "New Vessel Takeover — General Cargo",
     fleetSize: "1 Vessel",
+    flagRef: "Bahamas",
     challenge:
       "Documentation gaps and uncoordinated vendor servicing during vessel handover.",
     badge: "Smooth Transition",
@@ -55,6 +58,9 @@ export default function CaseStudiesGrid() {
                 <p className="text-muted-foreground text-xs mt-0.5">
                   Fleet: {c.fleetSize}
                 </p>
+                <p className="text-muted-foreground text-[11px] mt-0.5">
+                  Flag: {c.flagRef}
+                </p>
               </div>
 
               {/* Challenge */}
@@ -69,13 +75,13 @@ export default function CaseStudiesGrid() {
 
               {/* Bottom */}
               <div className="pt-6 border-t border-dpa-border mt-auto">
-                <span className="inline-block bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 mb-4">
+                <span className="inline-block bg-teal text-white text-[10px] font-extrabold uppercase tracking-widest px-2 py-0.5 mb-4">
                   {c.badge}
                 </span>
                 <div>
                   <a
                     href={c.anchor}
-                    className="inline-flex border border-teal text-teal text-xs font-semibold px-5 py-2 hover:bg-teal hover:text-white transition-colors"
+                    className="inline-flex border-2 border-teal text-teal text-xs font-semibold px-5 py-2 hover:bg-teal hover:text-white transition-colors"
                   >
                     View Case
                   </a>

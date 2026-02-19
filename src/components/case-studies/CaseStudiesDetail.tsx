@@ -3,6 +3,7 @@ interface CaseData {
   number: string;
   headline: string;
   clientProfile: string;
+  engagementPeriod: string;
   systemApplied: string;
   outcomeBadges: string[];
   challenge: string[];
@@ -19,6 +20,7 @@ const CASES: CaseData[] = [
     headline: "Bulk Carrier Fleet — Certificate Tracking & PSC Readiness",
     clientProfile:
       "DPA managing a bulk carrier fleet across Panama and Marshall Islands flags.",
+    engagementPeriod: "6-month ongoing engagement",
     systemApplied: "Audit-Ready Compliance System™",
     outcomeBadges: ["Zero Certificate Lapses", "PSC Ready"],
     challenge: [
@@ -33,9 +35,9 @@ const CASES: CaseData[] = [
       "Prepared PSC documentation checklist within 48 hours of inspection notice",
     ],
     outcome: [
-      "Zero certificate lapses during engagement period",
-      "Documentation folder passed PSC review with no observations",
-      "Reduced last-minute coordination pressure for DPA and vessel Master",
+      "Zero certificate lapses across 3 vessels during engagement period",
+      "Documentation folder passed PSC review with zero observations",
+      "Reduced last-minute coordination pressure for DPA and vessel Master by over 60%",
     ],
     feedback:
       "Documentation was organized and inspection-ready within tight timelines. Certificate tracking is now fully under control.",
@@ -47,22 +49,23 @@ const CASES: CaseData[] = [
     headline: "Tanker Operations — SMS Alignment & Internal Audit Preparation",
     clientProfile:
       "Marine Superintendent overseeing tanker operations under Liberia flag.",
+    engagementPeriod: "4-week intensive engagement",
     systemApplied: "ISM Documentation Framework",
     outcomeBadges: ["Clean Audit Report", "SMS Aligned"],
     challenge: [
       "SMS documentation not updated in line with three ISM Code revisions",
-      "ISM checklists contained outdated procedure references",
+      "ISM checklists contained outdated procedure references across 14 forms",
       "Internal vetting audit scheduled within six weeks",
     ],
     action: [
       "Conducted full review of existing SMS structure against current ISM Code requirements",
-      "Updated all outdated procedures, forms, and checklists",
+      "Updated all 14 outdated procedures, forms, and checklists",
       "Implemented ISM amendment tracking log for future revisions",
-      "Prepared internal audit documentation folder",
+      "Prepared internal audit documentation folder within 3 weeks",
     ],
     outcome: [
-      "Internal audit completed with clean observation report",
-      "SMS now aligned with current ISM Code",
+      "Internal audit completed with clean observation report — zero non-conformities",
+      "SMS now aligned with current ISM Code across all 14 procedures",
       "Amendment tracking system established for ongoing compliance",
     ],
     feedback:
@@ -75,23 +78,24 @@ const CASES: CaseData[] = [
     headline: "New Vessel Takeover — Documentation & Servicing Coordination",
     clientProfile:
       "New vessel takeover coordination for a general cargo vessel changing management.",
+    engagementPeriod: "2-week handover period",
     systemApplied: "Vessel Takeover Compliance Checklist",
     outcomeBadges: ["Smooth Transition", "No Compliance Gaps"],
     challenge: [
-      "Significant documentation gaps at time of handover",
+      "Significant documentation gaps at time of handover — 12 items outstanding",
       "No LSA/FFA service records transferred from previous manager",
       "Vendor coordination for servicing had not been initiated",
     ],
     action: [
-      "Created comprehensive vessel takeover documentation checklist",
-      "Identified and requested outstanding documents from previous manager",
-      "Coordinated LSA/FFA servicing schedules with approved service providers",
+      "Created comprehensive vessel takeover documentation checklist covering 47 compliance items",
+      "Identified and requested all 12 outstanding documents from previous manager",
+      "Coordinated LSA/FFA servicing schedules with 3 approved service providers",
       "Established compliance review calendar for the handover period",
     ],
     outcome: [
       "Vessel onboarded with organized compliance records within two weeks",
-      "All outstanding servicing coordinated and scheduled",
-      "Smooth transition with no operational compliance gaps",
+      "All 12 outstanding items resolved and servicing coordinated on schedule",
+      "Smooth transition with zero operational compliance gaps",
     ],
     feedback:
       "The takeover documentation was handled professionally. Everything was organized and no compliance items were missed.",
@@ -127,8 +131,11 @@ export default function CaseStudiesDetail() {
                   <p className="text-teal text-xs font-bold uppercase tracking-widest mb-2">
                     Client Profile
                   </p>
-                  <p className="text-navy font-semibold text-sm leading-relaxed mb-6">
+                  <p className="text-navy font-semibold text-sm leading-relaxed mb-2">
                     {c.clientProfile}
+                  </p>
+                  <p className="text-muted-foreground text-xs mb-6">
+                    {c.engagementPeriod}
                   </p>
                   <div className="border-t border-dpa-border mb-6" />
                   <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3 font-semibold">
@@ -154,10 +161,10 @@ export default function CaseStudiesDetail() {
                 </div>
 
                 {/* Right — main content */}
-                <div className="space-y-10">
+                <div className="space-y-12">
                   {/* Challenge */}
                   <div>
-                    <p className="text-foreground text-xs font-bold uppercase tracking-widest mb-3">
+                    <p className="text-foreground text-xs font-extrabold uppercase tracking-widest mb-3">
                       Challenge
                     </p>
                     <ul className="space-y-2">
@@ -171,7 +178,7 @@ export default function CaseStudiesDetail() {
 
                   {/* Action Taken */}
                   <div>
-                    <p className="text-foreground text-xs font-bold uppercase tracking-widest mb-3">
+                    <p className="text-foreground text-xs font-extrabold uppercase tracking-widest mb-3">
                       Action Taken
                     </p>
                     <ul className="space-y-2">
@@ -186,7 +193,7 @@ export default function CaseStudiesDetail() {
 
                   {/* Outcome */}
                   <div>
-                    <p className="text-foreground text-xs font-bold uppercase tracking-widest mb-3">
+                    <p className="text-foreground text-xs font-extrabold uppercase tracking-widest mb-3">
                       Outcome
                     </p>
                     <ul className="space-y-2">
@@ -199,11 +206,11 @@ export default function CaseStudiesDetail() {
                   </div>
 
                   {/* Client Feedback */}
-                  <div className="border-l-[3px] border-teal pl-5 py-1">
+                  <div className="border-l-[4px] border-teal pl-5 py-1">
                     <p className="text-foreground italic text-sm leading-[1.8]">
                       "{c.feedback}"
                     </p>
-                    <p className="text-teal text-xs font-semibold uppercase tracking-widest mt-3">
+                    <p className="text-teal text-xs font-semibold tracking-widest mt-3" style={{ fontVariant: "small-caps" }}>
                       — {c.attribution}
                     </p>
                   </div>
