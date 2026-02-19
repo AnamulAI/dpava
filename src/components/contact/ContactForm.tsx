@@ -191,22 +191,27 @@ export default function ContactForm() {
                 name="message"
                 required
                 maxLength={1000}
-                rows={5}
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Describe your compliance requirements, vessel types, flag states, or any other relevant details…"
+              rows={7}
+              value={form.message}
+              onChange={handleChange}
+              placeholder="e.g. We manage 3 vessels flagged under Panama and Marshall Islands. Looking for ongoing certification tracking, ISM documentation support, and PSC audit preparation. Vessels are bulk carriers operating in Asia-Pacific routes."
                 className="w-full border border-dpa-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-teal transition-colors resize-none"
               />
             </div>
 
             {/* Submit */}
-            <div>
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-10 py-4 hover:bg-teal-hover transition-colors text-base"
-              >
-                Request Support Plan
-              </button>
+            <div className="flex flex-col gap-3">
+              <div>
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-10 py-4 hover:bg-teal-hover transition-colors text-base"
+                >
+                  Request Support Plan
+                </button>
+              </div>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                No upfront payment required. Support begins after agreement.
+              </p>
             </div>
 
             {/* Confidentiality note */}

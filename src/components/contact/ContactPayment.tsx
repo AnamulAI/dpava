@@ -2,10 +2,22 @@ const PAYMENT_METHODS = [
   {
     name: "Payoneer",
     desc: "Global payment platform for freelancers and businesses.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-7 h-7" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="24" fill="#FF4800" fillOpacity="0.12" />
+        <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="13" fontWeight="700" fill="#FF4800" fontFamily="sans-serif">P</text>
+      </svg>
+    ),
   },
   {
     name: "Wise",
     desc: "International bank transfer with mid-market exchange rates.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-7 h-7" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="24" fill="#9FE870" fillOpacity="0.18" />
+        <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="13" fontWeight="700" fill="#2D8653" fontFamily="sans-serif">W</text>
+      </svg>
+    ),
   },
 ];
 
@@ -28,10 +40,10 @@ export default function ContactPayment() {
             {PAYMENT_METHODS.map((method) => (
               <div
                 key={method.name}
-                className="bg-background border border-dpa-border p-8 flex flex-col gap-3"
+                className="bg-background border border-dpa-border p-10 flex flex-col gap-3"
               >
-                {/* Left accent */}
-                <div className="w-1 h-8 bg-teal self-start" />
+                {/* Icon */}
+                <div className="mb-1">{method.icon}</div>
                 <h3 className="text-navy font-bold text-lg">{method.name}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {method.desc}

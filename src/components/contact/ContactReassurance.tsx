@@ -4,7 +4,7 @@ const WA_LINK = "https://wa.me/88017414688828";
 
 export default function ContactReassurance() {
   return (
-    <section className="bg-navy-deep py-20 md:py-28">
+    <section className="bg-navy-deep py-20 md:py-28 border-t border-white/10">
       <div className="container mx-auto px-6 text-center max-w-2xl">
         <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-5">
           Commitment
@@ -12,7 +12,7 @@ export default function ContactReassurance() {
         <h2 className="text-white text-3xl md:text-4xl font-bold mb-6 leading-[1.1]">
           Confidential & Professional Support
         </h2>
-        <p className="text-white/60 text-base leading-[1.8] mb-10 max-w-xl mx-auto">
+        <p className="text-white/60 text-base leading-[2] mb-10 max-w-xl mx-auto">
           All vessel documentation and compliance data are handled with
           discretion and professional responsibility. Information shared during
           engagement is never disclosed outside the agreed workflow.
@@ -21,7 +21,7 @@ export default function ContactReassurance() {
           href={WA_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-10 py-4 hover:bg-teal-hover transition-colors text-base"
+          className="inline-flex items-center gap-2 bg-teal text-white font-semibold px-12 py-5 hover:bg-teal-hover transition-colors text-base"
         >
           <WhatsAppIcon />
           WhatsApp Now
