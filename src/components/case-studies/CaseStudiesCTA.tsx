@@ -17,7 +17,7 @@ export default function CaseStudiesCTA() {
           Response within 24 hours.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 mb-6">
           <a
             href={WA_LINK}
             target="_blank"
@@ -35,6 +35,9 @@ export default function CaseStudiesCTA() {
             Contact Page
           </a>
         </div>
+        <p className="text-muted-foreground text-xs uppercase tracking-widest font-semibold">
+          Confidential. Structured. Reliable.
+        </p>
       </div>
     </section>
   );
