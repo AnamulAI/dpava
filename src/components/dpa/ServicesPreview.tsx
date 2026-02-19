@@ -74,9 +74,9 @@ export default function ServicesPreview() {
             >
               {/* Badge row */}
               <div className="h-7 mb-5 flex gap-2 items-center">
-                {svc.highlight && (
-                  <span className="bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1">
-                    Most Popular
+              {svc.highlight && (
+                  <span className="bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 text-center">
+                    MOST POPULAR
                   </span>
                 )}
                 {svc.badge && (
@@ -101,7 +101,7 @@ export default function ServicesPreview() {
               </ul>
 
               <div className="border-t border-dpa-border pt-5 mt-auto">
-                <p className="text-navy text-2xl font-bold">{svc.price}</p>
+                <p className="text-navy text-2xl font-bold"><span className="text-base font-semibold">Starts from </span>{svc.price.replace("Starts from ", "")}</p>
                 <p className="text-muted-foreground text-xs mt-1">{svc.unit}</p>
               </div>
 

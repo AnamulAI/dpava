@@ -52,7 +52,7 @@ export default function CaseStudies() {
                 <p className="text-muted-foreground text-xs mt-1">{c.flag}</p>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-8">
                 <span className="text-xs font-bold text-foreground uppercase tracking-widest">
                   Main Challenge
                 </span>
@@ -61,7 +61,7 @@ export default function CaseStudies() {
                 </p>
               </div>
 
-              <div className="mt-auto pt-6 border-t border-dpa-border">
+              <div className="mt-auto pt-7 border-t border-dpa-border">
                 <span className="inline-block bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 mb-2">
                   Key Result
                 </span>
@@ -76,7 +76,7 @@ export default function CaseStudies() {
         <div className="text-center">
           <a
             href="/case-studies"
-            className="inline-flex items-center border border-teal text-teal font-semibold text-sm px-6 py-2.5 hover:bg-teal hover:text-white transition-colors"
+            className="inline-flex items-center border border-teal text-teal font-semibold text-sm px-8 py-3 hover:bg-teal hover:text-white transition-colors"
           >
             View Case Studies →
           </a>

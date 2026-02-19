@@ -31,7 +31,7 @@ export default function ProblemBlock() {
   return (
     <section className="bg-gray-light py-20 md:py-24 border-b border-dpa-border">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-14">
+        <div className="text-center mb-16">
           <h2 className="text-navy text-3xl md:text-4xl font-bold mb-0">
             Compliance Pressure Never Stops.
           </h2>

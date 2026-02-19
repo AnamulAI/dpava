@@ -18,10 +18,10 @@ export default function Hero() {
             <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-4">
               Maritime Compliance Support
             </p>
-            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.15] mb-8 max-w-lg">
+            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.1] mb-8 max-w-lg">
               Professional Remote Marine Compliance Support
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-xl">
+            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-[540px]">
               Supporting DPA, ADPA, and Marine Superintendents with certification
               tracking, ISM documentation, and audit readiness — without hiring
               full-time staff.
@@ -52,7 +52,7 @@ export default function Hero() {
               {PROOF_CHIPS.map((chip) => (
                 <span
                   key={chip}
-                  className="border border-teal/30 text-sm font-medium text-foreground px-4 py-1.5 bg-teal/5"
+                  className="border border-teal/50 text-sm font-medium text-foreground px-4 py-1.5 bg-teal/5"
                 >
                   {chip}
                 </span>
