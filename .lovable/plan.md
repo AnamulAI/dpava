@@ -1,9 +1,9 @@
 
-## Services Page — DPA Virtual Assistant
+## Case Studies Page — DPA Virtual Assistant
 
 ### Overview
 
-A new `/services` route built from 6 dedicated section components inside `src/components/services/`, assembled in `src/pages/Services.tsx`, and registered as a new route in `src/App.tsx`. The page reuses the existing Header and Footer, and mirrors the exact design system — same color tokens, spacing rhythm, flat enterprise aesthetic, and typography scale as Home and About pages.
+A new `/case-studies` route built from 5 dedicated section components inside `src/components/case-studies/`, assembled in `src/pages/CaseStudies.tsx`, and registered as a new route in `src/App.tsx`. The page reuses the existing Header and Footer, mirrors the flat enterprise design system, and introduces a subtle abstract SVG marine art background in the hero — no photography, no gradients.
 
 ---
 
@@ -12,196 +12,206 @@ A new `/services` route built from 6 dedicated section components inside `src/co
 ```text
 src/
   pages/
-    Services.tsx                         ← page assembly
+    CaseStudies.tsx                             ← page assembly
   components/
-    services/
-      ServicesHero.tsx                   ← Section 1
-      ServicePackages.tsx                ← Section 2 (3 core cards)
-      AllInOnePackage.tsx                ← Section 3 (highlighted full-width block)
-      ServiceScope.tsx                   ← Section 4 (grid of categories)
-      ServicesFAQ.tsx                    ← Section 5 (accordion)
-      ServicesCTA.tsx                    ← Section 6 (final CTA)
+    case-studies/
+      CaseStudiesHero.tsx                       ← Section 1: Hero
+      CaseStudiesGrid.tsx                       ← Section 2: Overview cards (3)
+      CaseStudiesDetail.tsx                     ← Section 3: Full case study blocks
+      CaseStudiesApproach.tsx                   ← Section 4: Dark navy system block
+      CaseStudiesCTA.tsx                        ← Section 5: Final CTA
 ```
 
 **Modified files:**
-- `src/App.tsx` — add `<Route path="/services" element={<Services />} />`
+- `src/App.tsx` — add `<Route path="/case-studies" element={<CaseStudies />} />`
 
 ---
 
-### Section 1 — Hero (`ServicesHero.tsx`)
+### Section 1 — Hero (`CaseStudiesHero.tsx`)
 
-Mirrors `Hero.tsx` structure without the headshot column — single centered or left-biased layout since there is no profile image needed for a services page:
+Hero uses an inline SVG abstract marine art background — geometric wave/anchor pattern rendered as an SVG, absolutely positioned, heavily blurred (12px), with a deep navy overlay at `rgba(11,31,59,0.80)`. This matches the Services and Contact hero treatment but uses no image asset — purely code-generated abstract art.
 
-- Two-column layout: left = text, right = a compact stat block (proof strip)
-- Label chip: `"Services"` teal uppercase tracking-widest
-- Headline: `"Maritime Compliance Support Services"` — `text-4xl md:text-5xl font-bold leading-[1.1] text-navy max-w-lg`
-- Subheadline: `"Structured administrative and compliance support tailored for DPAs and Marine Superintendents."` — `max-w-[540px] text-muted-foreground text-lg leading-relaxed`
-- Intro paragraph: `"Choose the level of support that fits your fleet's compliance and operational requirements."` — `text-base text-muted-foreground leading-[1.8] max-w-[480px]`
-- CTA buttons (same classes as Hero.tsx):
-  - WhatsApp Now: `bg-teal text-white px-8 py-4 text-base font-semibold` + `WhatsAppIcon` + `ArrowRight`
-  - Contact Page: `border border-navy text-navy px-7 py-3 font-semibold text-sm hover:bg-navy hover:text-white`
-- Right column: a flat bordered stat card (`border border-[#E2E8F0] p-8`) with 3 trust indicators:
-  - "3 Service Tiers" — structured support levels
-  - "26+ Vessels" — compliance experience
-  - "24/7 Availability" — global timezone coverage
-  Each stat: teal large number/label, muted description below
-- `bg-background py-20 md:py-28 border-b border-dpa-border`
+The SVG abstract background consists of:
+- Concentric semi-circle wave arcs (representing ocean horizon lines) rendered in teal/white at low opacity
+- A simple compass-rose geometric shape at center
+- Thin diagonal grid lines mimicking nautical chart paper
+- All strokes at very low opacity so blur renders them as a soft textured wash
 
----
+Layout — single centered column (no stat card column needed for this page):
 
-### Section 2 — Core Service Packages (`ServicePackages.tsx`)
-
-Closely mirrors `ServicesPreview.tsx` but expanded with the additional vendor coordination feature on the highlighted card and the Operational Compliance card having 5 features:
-
-- Label chip: `"Core Packages"` teal uppercase
-- Heading: `"Choose Your Support Level"` — `text-navy text-3xl md:text-4xl font-bold`
-- 3-column card grid (`grid md:grid-cols-3 gap-6`), same card structure as `ServicesPreview.tsx`:
-
-**Card 1 — Certification Management**
-- `border border-dpa-border p-8 flex flex-col`
-- No badge row
-- Features (4): Certificate tracking & expiry alerts / Survey scheduling coordination / Flag state renewal filings / Monthly compliance status report
-- Price: `Starts from $149` per vessel / month
-- CTA: `border border-navy text-navy` outline button "Get Started" → WA link
-
-**Card 2 — SMS / ISM Support**
-- `border border-dpa-border p-8 flex flex-col`
-- No badge row
-- Features (4): SMS policy & procedure updates / ISM amendment management / Drill planning & record maintenance / Internal audit preparation support
-- Price: `Starts from $199` per vessel / month
-- CTA: outline button
-
-**Card 3 — Operational Compliance Support** (highlighted)
-- `border-teal bg-teal/[0.03] p-8 flex flex-col` with `style={{ borderWidth: '3px' }}`
-- Badge row: teal "MOST POPULAR" badge + navy "ALL-IN-ONE" badge (same pattern as ServicesPreview)
-- Features (5): All Certification Management features / All SMS/ISM Support features / LSA/FFA servicing coordination / Vetting & PSC inspection readiness / Vendor coordination support
-- Price: `Starts from $249` per vessel / month
-- CTA: `bg-teal text-white hover:bg-teal-hover` filled button
+- Label chip: `"Case Studies"` teal uppercase tracking-widest
+- Headline: `"Maritime Compliance Case Studies"` — `text-white text-4xl md:text-5xl font-bold leading-[1.1] max-w-xl`
+- Subheadline: `"Real-world compliance challenges and structured solutions implemented across supported vessels."` — `text-white/70 text-lg leading-relaxed max-w-[560px]`
+- Intro paragraph: `"Each case reflects structured administrative support, audit readiness preparation, and disciplined documentation control."` — `text-white/55 text-base leading-[1.8] max-w-[520px]`
+- Single CTA: WhatsApp Now — `bg-teal text-white px-8 py-4 font-semibold text-base` + WhatsAppIcon + ArrowRight
+- Micro-trust strip below buttons: 3 inline chips `border border-white/20 text-white/60 text-xs px-3 py-1` — "3 Cases Documented" / "Zero PSC Detentions" / "Audit-Ready Compliance System™"
+- `relative py-20 md:py-28 border-b border-dpa-border overflow-hidden`
 
 ---
 
-### Section 3 — All-In-One Package (`AllInOnePackage.tsx`)
+### Section 2 — Case Study Overview Grid (`CaseStudiesGrid.tsx`)
 
-A single prominent full-width block — visually distinct from the 3-card grid above.
-
-- `bg-navy-deep py-16 md:py-20 border-b border-white/10`
-- Two-column layout: left = text, right = price+CTA
-- Left:
-  - Label chip: `"Complete Solution"` in teal uppercase
-  - Heading: `"Complete Fleet Compliance Support"` — `text-white text-2xl md:text-3xl font-bold`
-  - Description: `text-white/60 text-base leading-relaxed max-w-lg` — "A consolidated compliance solution combining certification, documentation, coordination, and reporting into one seamless support structure."
-  - Feature list (inline, horizontal tags): cert management + SMS/ISM + LSA/FFA + vetting + vendor + reporting — displayed as small `border border-white/20 text-white/70 text-xs px-3 py-1` chips in a flex-wrap row
-  - Multi-vessel note: `text-white/50 text-sm mt-4` — "Multi-vessel discounts available upon discussion."
-- Right (centered vertically):
-  - `border border-white/20 p-8 text-center`
-  - `text-white/50 text-xs uppercase tracking-widest mb-1` — "Starting From"
-  - `text-white text-4xl font-bold` — "$299"
-  - `text-white/50 text-sm mt-1` — "per vessel / month"
-  - WhatsApp CTA button: `bg-teal text-white px-8 py-3.5 font-semibold text-sm hover:bg-teal-hover` with `WhatsAppIcon`
-  - Contact link below: `text-white/50 text-xs hover:text-white/70 mt-3 inline-block` — "or Contact Page →"
-
----
-
-### Section 4 — Detailed Service Scope (`ServiceScope.tsx`)
-
-Grid layout of 5 service categories. Mirrors `ProblemBlock.tsx` card style.
-
-- `bg-gray-light py-20 md:py-24 border-b border-dpa-border`
-- Label chip: `"What's Included"` teal uppercase
-- Heading: `"Detailed Service Scope"` — `text-navy text-3xl md:text-4xl font-bold`
-- `grid sm:grid-cols-2 lg:grid-cols-3 gap-6` (5 cards — last row has 2 cards centered or fills 3rd slot with a "Get a Quote" CTA card)
-- Each card: `bg-background border border-[#E2E8F0] p-8`
-- Icons from lucide-react (already installed):
-  1. **Certification Oversight** — `Award` icon — bullet list: statutory cert tracking, expiry alerts, renewal coordination, survey planning, flag state filing
-  2. **Audit Preparation** — `ClipboardCheck` icon — bullet list: PSC inspection readiness, vetting preparation, drill record review, internal audit documentation
-  3. **Documentation Control** — `FolderOpen` icon — bullet list: SMS/ISM updates, ISM amendment logging, circulars and policy revisions, record maintenance
-  4. **Vendor Coordination** — `Handshake` icon — bullet list: LSA/FFA servicing arrangement, class surveyor liaison, approved service provider tracking, PMS support coordination
-  5. **Compliance Reporting** — `BarChart3` icon (already in codebase) — bullet list: monthly compliance dashboards, flag state reporting, ownership/manager updates, deficiency tracking
-- Icon color: `text-teal`, `size={28}`, `mb-5`
-- Card heading: `text-navy font-extrabold text-base mb-4`
-- Bullet items: `flex items-start gap-2 text-sm text-foreground` with teal `✓`
-
----
-
-### Section 5 — FAQ (`ServicesFAQ.tsx`)
-
-Uses the existing `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent` from `@/components/ui/accordion`.
+3 compact overview cards. Same flat card pattern as `CaseStudies.tsx` (already exists on Home page) but extended with a "Key Result Badge" and a "View Case" anchor button that jumps to the detailed section.
 
 - `bg-background py-20 md:py-24 border-b border-dpa-border`
-- Label chip: `"FAQ"` teal uppercase
-- Heading: `"Common Questions"` — `text-navy text-3xl md:text-4xl font-bold`
-- Subheading: `text-muted-foreground text-base max-w-xl` — "Answers to the most common questions from DPAs and Marine Superintendents before engagement."
-- Max-width constrained accordion: `max-w-3xl mx-auto mt-12`
-- `<Accordion type="single" collapsible className="w-full">`
-- Each `AccordionItem` styled: `border border-[#E2E8F0] mb-3 px-6` (override default `border-b` with explicit border for card-like feel)
-- `AccordionTrigger`: `text-navy font-semibold text-base py-5 hover:no-underline`
-- `AccordionContent`: `text-muted-foreground text-sm leading-[1.8] pb-5`
+- Label chip: `"Overview"` teal uppercase
+- Heading: `"Three Documented Cases"` — `text-navy text-3xl md:text-4xl font-bold`
+- `grid md:grid-cols-3 gap-6 mt-12`
 
-6 Questions and answers:
+**Card 1:**
+- Client Type: `"DPA — Bulk Carrier Fleet"`
+- Fleet Size: `"3 Vessels"`
+- Primary Challenge: `"Multiple expiring certificates with no centralized tracking and a short-notice PSC inspection."`
+- Key Result Badge: `"Zero Certificate Lapses"` — `inline-block bg-teal text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5`
+- View Case button: `border border-teal text-teal text-xs font-semibold px-5 py-2 hover:bg-teal hover:text-white transition-colors` — anchors to `#case-01`
 
-1. **Do you replace the statutory responsibility of the DPA?**
-   Answer: No. I provide administrative and documentation support only. Statutory responsibility under ISM Code remains with the designated DPA, Master, and Company. My role is to organize, track, and prepare — not to authorize or certify.
+**Card 2:**
+- Client Type: `"Marine Superintendent — Tanker Operations"`
+- Fleet Size: `"2 Vessels"`
+- Primary Challenge: `"SMS documentation outdated, ISM checklist inconsistencies, and imminent audit pressure."`
+- Key Result Badge: `"Clean Audit Report"`
+- View Case → `#case-02`
 
-2. **How do you manage confidential vessel documentation?**
-   Answer: All vessel documentation is handled through secure, access-controlled cloud storage. Files are organized per vessel with client-authorized access only. No documentation is shared outside the agreed workflow.
+**Card 3:**
+- Client Type: `"New Vessel Takeover — General Cargo"`
+- Fleet Size: `"1 Vessel"`
+- Primary Challenge: `"Documentation gaps and uncoordinated vendor servicing during vessel handover."`
+- Key Result Badge: `"Smooth Transition"`
+- View Case → `#case-03`
 
-3. **How quickly do you respond to urgent inspection requirements?**
-   Answer: I maintain 24/7 availability for urgent compliance needs. For PSC or flag state inspection support, I prioritize document retrieval and checklist preparation within hours of notification.
-
-4. **Can you support multiple vessels across different flags?**
-   Answer: Yes. I have experience supporting fleets with vessels registered under multiple flag states including Panama, Marshall Islands, Liberia, Bahamas, and Cyprus. Each vessel's compliance requirements are tracked independently.
-
-5. **What tools do you use for tracking certificates?**
-   Answer: I use structured tracking systems including spreadsheet-based dashboards, cloud document management, and compliance calendars with automated expiry alerts. Tools are adapted to the client's existing workflows where possible.
-
-6. **How does onboarding work?**
-   Answer: Onboarding begins with a vessel documentation review and compliance gap assessment. I then establish tracking systems, organize existing records, and set up a reporting cadence. Most vessels are fully onboarded within 1–2 weeks depending on documentation availability.
+Card structure:
+- `bg-background border border-dpa-border p-8 flex flex-col`
+- Top section: Client Type label (`text-xs font-bold text-teal uppercase tracking-widest`), Client Type value (`text-navy font-semibold text-base mt-1`), Fleet Size (`text-muted-foreground text-xs mt-0.5`)
+- Middle section: Challenge label + text (`text-muted-foreground text-sm leading-relaxed`)
+- Bottom (mt-auto): `pt-6 border-t border-dpa-border` — Key Result badge on one line, View Case button below
 
 ---
 
-### Section 6 — Final CTA (`ServicesCTA.tsx`)
+### Section 3 — Detailed Case Studies (`CaseStudiesDetail.tsx`)
 
-Identical structure to `CTABlock.tsx` with updated copy:
+Three full case study blocks in a single component, each with an `id` anchor for jump navigation from the overview cards. Alternating light/gray-light background for visual separation between cases.
+
+**Overall section:**
+- `py-0` (no outer padding — each case block manages its own vertical spacing)
+- `border-b border-dpa-border`
+
+**Each case block structure:**
+
+- Case number strip: `bg-navy-deep py-3` with `container mx-auto px-6` — displays `"CASE STUDY 01"` in `text-white/40 text-xs font-bold uppercase tracking-widest` and the case headline in `text-white font-bold text-lg`
+- Main content area: `bg-background` (odd) or `bg-gray-light` (even) `py-16 md:py-20`
+- `container mx-auto px-6 max-w-5xl`
+- Two-column layout: `grid md:grid-cols-[1fr_2fr] gap-12 items-start`
+
+Left column (metadata sidebar):
+- `border-l-[3px] border-teal pl-6` wrapper
+- Client Profile label: `text-teal text-xs font-bold uppercase tracking-widest mb-2`
+- Client Profile value: `text-navy font-semibold text-sm leading-relaxed`
+- Separator `my-6 border-t border-dpa-border`
+- System Applied chip: `bg-navy text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5` — "Audit-Ready Compliance System™"
+- Outcome badges: teal bg badges for key metrics (e.g. "Zero Certificate Lapses", "PSC Ready")
+
+Right column (main content):
+Four sub-blocks arranged vertically, each with a label and content:
+
+1. **Challenge** — `text-foreground text-xs font-bold uppercase tracking-widest mb-3` label + bullet list `text-sm text-muted-foreground leading-relaxed` with `– ` prefix
+2. **Action Taken** — same label pattern + bullet list with teal `✓` prefix, `text-foreground text-sm`
+3. **Outcome** — label + bullet list, each item in `text-navy font-medium text-sm`
+4. **Client Feedback** — `border-l-[3px] border-teal pl-5 py-1` blockquote style — quote text in `text-foreground italic text-sm leading-[1.8]`, attribution in `text-teal text-xs font-semibold uppercase tracking-widest mt-3`
+
+Case data:
+
+**CASE 01 — id="case-01"**
+- Client Profile: DPA managing a bulk carrier fleet across Panama and Marshall Islands flags.
+- Challenge bullets: Multiple statutory certificates approaching expiry with no centralized tracking / Master relied upon for renewal reminders — creating audit risk / Short-notice PSC inspection announced with incomplete documentation folder
+- Action bullets: Implemented structured certificate tracking dashboard with expiry alert schedule / Centralized all vessel documents into organized, inspection-ready folders / Coordinated renewal filings with flag state and class society / Prepared PSC documentation checklist within 48 hours of inspection notice
+- Outcome bullets: Zero certificate lapses during engagement period / Documentation folder passed PSC review with no observations / Reduced last-minute coordination pressure for DPA and vessel Master
+- Client Feedback: "Documentation was organized and inspection-ready within tight timelines. Certificate tracking is now fully under control."
+- Attribution: DPA, Bulk Carrier Owner (Panama/Marshall Islands)
+
+**CASE 02 — id="case-02"**
+- Client Profile: Marine Superintendent overseeing tanker operations under Liberia flag.
+- Challenge bullets: SMS documentation not updated in line with three ISM Code revisions / ISM checklists contained outdated procedure references / Internal vetting audit scheduled within six weeks
+- Action bullets: Conducted full review of existing SMS structure against current ISM Code requirements / Updated all outdated procedures, forms, and checklists / Implemented ISM amendment tracking log for future revisions / Prepared internal audit documentation folder
+- Outcome bullets: Internal audit completed with clean observation report / SMS now aligned with current ISM Code / Amendment tracking system established for ongoing compliance
+- Client Feedback: "The SMS revision was completed efficiently before the audit deadline. Documentation alignment was exactly what we needed."
+- Attribution: Marine Superintendent, Tanker Operator (Liberia)
+
+**CASE 03 — id="case-03"**
+- Client Profile: New vessel takeover coordination for a general cargo vessel changing management.
+- Challenge bullets: Significant documentation gaps at time of handover / No LSA/FFA service records transferred from previous manager / Vendor coordination for servicing had not been initiated
+- Action bullets: Created comprehensive vessel takeover documentation checklist / Identified and requested outstanding documents from previous manager / Coordinated LSA/FFA servicing schedules with approved service providers / Established compliance review calendar for the handover period
+- Outcome bullets: Vessel onboarded with organized compliance records within two weeks / All outstanding servicing coordinated and scheduled / Smooth transition with no operational compliance gaps
+- Client Feedback: "The takeover documentation was handled professionally. Everything was organized and no compliance items were missed."
+- Attribution: ADPA, General Cargo Shipping Company (Bahamas)
+
+---
+
+### Section 4 — System Approach (`CaseStudiesApproach.tsx`)
+
+Dark navy block. Mirrors the `OurApproach.tsx` structure from About page.
+
+- `bg-navy-deep py-20 md:py-24 border-b border-white/10`
+- Label chip: `"Framework"` teal uppercase
+- Heading: `"Structured Approach to Compliance Support"` — `text-white text-3xl md:text-4xl font-bold`
+- Subtext: `text-white/60 text-base max-w-xl` — "Every case is handled using the same disciplined four-pillar framework — ensuring consistency across vessel types and flag states."
+- 4-column grid (matches approach section layout): `grid sm:grid-cols-2 lg:grid-cols-4 gap-0` with `border border-white/10` cards
+- Each pillar: left-accent `border-l-[3px] border-teal` on hover (or always shown), icon from lucide-react, pillar name large, short description
+
+4 pillars:
+1. **Track** — `BarChart3` icon — "Certificate deadlines, survey windows, and equipment service records monitored across all assigned vessels."
+2. **Coordinate** — `Handshake` icon — "Renewal filings, vendor servicing, class surveyor liaison, and flag state submissions organized and followed through."
+3. **Document** — `FolderOpen` icon — "SMS procedures, ISM amendments, drill records, and inspection checklists maintained in structured, audit-ready format."
+4. **Report** — `ClipboardCheck` icon — "Regular compliance status updates provided to DPA, management, and owners to maintain full visibility."
+
+Each card: `p-8 border border-white/10`
+- Step number `text-teal text-xs font-bold uppercase tracking-widest mb-4` (e.g. "01 — Track")
+- Icon `text-teal mb-4` size 28, strokeWidth 1.5
+- Title `text-white font-bold text-lg mb-3`
+- Description `text-white/55 text-sm leading-relaxed`
+
+---
+
+### Section 5 — Final CTA (`CaseStudiesCTA.tsx`)
+
+Identical structure to `ServicesCTA.tsx` and `CTABlock.tsx` with updated copy.
 
 - `bg-gray-light py-24 md:py-32 border-b border-dpa-border`
 - Label chip: `"Get Started"` teal uppercase
-- Heading: `"Ready to Simplify Compliance Management?"` — `text-navy text-3xl md:text-4xl font-bold`
-- Body: `"Send your vessel count and service requirements. A tailored support structure will be proposed within 24 hours."` — `text-muted-foreground text-base leading-[1.8]`
-- Two buttons (identical classes to `CTABlock.tsx`):
-  - WhatsApp Now: `bg-teal text-white px-10 py-4 text-base font-semibold` + `WhatsAppIcon` + `ArrowRight`
+- Heading: `"Need Similar Structured Support?"` — `text-navy text-3xl md:text-4xl font-bold`
+- Body: `"Send vessel details to receive a tailored compliance support structure. Response within 24 hours."` — `text-muted-foreground text-base leading-[1.8]`
+- Two buttons:
+  - WhatsApp Now: `bg-teal text-white px-10 py-4 font-semibold text-base` + WhatsAppIcon + ArrowRight
   - Contact Page: `border border-navy text-navy px-8 py-3.5 font-semibold text-sm hover:bg-navy hover:text-white`
 - `flex flex-wrap justify-center gap-6`
 
 ---
 
-### Page Assembly (`src/pages/Services.tsx`)
+### Page Assembly (`src/pages/CaseStudies.tsx`)
 
 ```tsx
 import Header from "@/components/dpa/Header";
 import Footer from "@/components/dpa/Footer";
-import ServicesHero from "@/components/services/ServicesHero";
-import ServicePackages from "@/components/services/ServicePackages";
-import AllInOnePackage from "@/components/services/AllInOnePackage";
-import ServiceScope from "@/components/services/ServiceScope";
-import ServicesFAQ from "@/components/services/ServicesFAQ";
-import ServicesCTA from "@/components/services/ServicesCTA";
+import CaseStudiesHero from "@/components/case-studies/CaseStudiesHero";
+import CaseStudiesGrid from "@/components/case-studies/CaseStudiesGrid";
+import CaseStudiesDetail from "@/components/case-studies/CaseStudiesDetail";
+import CaseStudiesApproach from "@/components/case-studies/CaseStudiesApproach";
+import CaseStudiesCTA from "@/components/case-studies/CaseStudiesCTA";
 
-const Services = () => (
+const CaseStudies = () => (
   <div className="min-h-screen font-sans">
     <Header />
     <main>
-      <ServicesHero />
-      <ServicePackages />
-      <AllInOnePackage />
-      <ServiceScope />
-      <ServicesFAQ />
-      <ServicesCTA />
+      <CaseStudiesHero />
+      <CaseStudiesGrid />
+      <CaseStudiesDetail />
+      <CaseStudiesApproach />
+      <CaseStudiesCTA />
     </main>
     <Footer />
   </div>
 );
 
-export default Services;
+export default CaseStudies;
 ```
 
 ---
@@ -209,19 +219,20 @@ export default Services;
 ### Route Registration (`src/App.tsx`)
 
 ```tsx
-import Services from "./pages/Services";
-// ...
-<Route path="/services" element={<Services />} />
+import CaseStudies from "./pages/CaseStudies";
+// inside <Routes>
+<Route path="/case-studies" element={<CaseStudies />} />
 ```
 
 ---
 
 ### Technical Notes
 
-- Zero new dependencies — all icons (`Award`, `ClipboardCheck`, `FolderOpen`, `Handshake`, `BarChart3`, `ArrowRight`) are from `lucide-react` (already installed)
-- The Accordion component from `@/components/ui/accordion` is already built and only needs to be imported — the default `border-b` on `AccordionItem` will be overridden via className to produce a card-style FAQ
-- Color tokens: `text-navy`, `text-teal`, `bg-teal`, `bg-teal-hover`, `bg-navy-deep`, `bg-gray-light`, `border-dpa-border`, `text-teal-hover` — all defined in `tailwind.config.ts`
-- `WhatsAppIcon` SVG is self-contained in each component (same pattern as Hero and CTABlock — no shared utility to avoid breaking existing files)
-- Flat design — no shadows, no gradients, no border-radius on structural elements; circular frames only allowed on profile imagery
-- The Header's "Services" nav link already points to `/services` — it will resolve and highlight correctly once the route exists
-- The "View All Services →" link in `ServicesPreview.tsx` on the Home page already points to `/services` — this will now resolve correctly
+- Zero new dependencies. All icons (`BarChart3`, `Handshake`, `FolderOpen`, `ClipboardCheck`, `ArrowRight`) are from `lucide-react` (already installed).
+- The hero abstract SVG marine art is rendered inline — no image file needed. The SVG uses geometric wave arcs, a compass-rose, and fine nautical chart grid lines. All strokes at very low opacity so the 12px CSS blur renders them as a subtle textured wash. This is more enterprise-appropriate than photography and entirely unique to this page.
+- The `#case-01`, `#case-02`, `#case-03` anchor IDs on detailed case blocks allow the overview card "View Case" buttons to jump smoothly to the full case detail without any JavaScript state — pure HTML scroll anchors.
+- Flat design maintained throughout — no shadows, no gradients, no border-radius on structural elements, square corners on all cards.
+- Color tokens used: `text-navy`, `bg-navy`, `bg-navy-deep`, `text-teal`, `bg-teal`, `bg-teal-hover`, `bg-gray-light`, `bg-background`, `border-dpa-border`, `text-muted-foreground` — all defined in `tailwind.config.ts`.
+- The Header already contains the `"Case Studies"` nav link pointing to `/case-studies` — it will resolve correctly once the route exists.
+- The `CaseStudies.tsx` component already exists on the Home page (`src/components/dpa/CaseStudies.tsx`) as a preview block with a "View Case Studies →" link to `/case-studies`. That link will now resolve correctly.
+- The `WhatsAppIcon` SVG is self-contained in each hero/CTA component following the established pattern of not sharing utility components to avoid breaking existing files.
