@@ -1,80 +1,133 @@
 
 
-## Add Supabase Auth-Based Admin Authentication
+## Full CMS Admin Panel
 
 ### Overview
 
-Implement a protected `/admin` area with email/password login using Supabase Auth. Only users listed in the existing `public.admins` table can access the admin area. No signup flow -- admin accounts are created manually via the Supabase Dashboard.
+Replace the placeholder admin dashboard with a complete CMS panel featuring sidebar navigation, top bar, and full CRUD management for all 9 content sections. All data operations use the existing Supabase tables with admin RLS policies.
 
-### What Gets Created
+### Architecture
 
-**New files (5):**
+**Layout:** Sidebar + top bar pattern using shadcn/ui Sidebar component.
 
-1. `src/contexts/AuthContext.tsx` -- Auth context provider that wraps admin routes, manages session state via `onAuthStateChange`, and exposes `user`, `isAdmin`, `loading`, `signIn`, `signOut`
-2. `src/pages/AdminLogin.tsx` -- Email + password login form at `/admin/login`. On successful login, checks the `admins` table; if user is not an admin, signs them out and shows "Access denied"
-3. `src/pages/AdminDashboard.tsx` -- Placeholder admin dashboard at `/admin` with a welcome message and logout button
-4. `src/components/admin/ProtectedRoute.tsx` -- Route guard component that redirects to `/admin/login` if not authenticated or not an admin
-5. `src/components/admin/AdminLayout.tsx` -- Minimal layout wrapper for admin pages (header with logo + logout button)
+- Left sidebar: 9 navigation items with icons, collapsible on mobile
+- Top bar: dynamic page title + user email + logout button
+- Main content area: renders the active section
 
-**Modified files (1):**
-
-1. `src/App.tsx` -- Add routes for `/admin/login` and `/admin` (wrapped in `AuthContext` and `ProtectedRoute`)
-
-### Authentication Flow
+**Routing:** Nested routes under `/admin` using React Router.
 
 ```text
-User visits /admin
-  --> ProtectedRoute checks session
-    --> No session? Redirect to /admin/login
-    --> Has session? Query admins table for user_id
-      --> Not in admins table? Sign out + show "Access denied"
-      --> In admins table? Render AdminDashboard
+/admin              --> Dashboard (stats overview)
+/admin/pages        --> Pages + Sections manager
+/admin/blog         --> Blog post list
+/admin/blog/new     --> Create blog post
+/admin/blog/:id     --> Edit blog post
+/admin/case-studies --> Case studies list + edit
+/admin/services     --> Services list + edit
+/admin/testimonials --> Testimonials list + edit
+/admin/logos        --> Trusted logos list + edit
+/admin/leads        --> Contact submissions list
+/admin/seo          --> SEO meta list + edit
 ```
 
-### Technical Details
+### Files to Create (21 new files)
 
-**AuthContext (`src/contexts/AuthContext.tsx`):**
-- Sets up `onAuthStateChange` listener BEFORE calling `getSession()` (per Supabase best practices)
-- On session change, queries `public.admins` where `user_id = session.user.id`
-- Exposes: `user`, `isAdmin`, `loading`, `signIn(email, password)`, `signOut()`
-- `signIn` method: calls `supabase.auth.signInWithPassword`, then checks admins table; if not admin, calls `signOut()` and throws error
+**Layout:**
+1. `src/components/admin/AdminSidebar.tsx` -- Sidebar with 9 nav items using shadcn Sidebar + NavLink for active state highlighting
+2. `src/components/admin/AdminLayout.tsx` -- (rewrite) SidebarProvider wrapper + top bar with dynamic title + logout
 
-**AdminLogin (`src/pages/AdminLogin.tsx`):**
-- Simple form with email and password fields using existing UI components (Input, Button, Card)
-- Shows error messages for invalid credentials or "Access denied" for non-admin users
-- On successful admin login, redirects to `/admin` via `useNavigate`
-- No signup link, no forgot password link
+**Dashboard:**
+3. `src/pages/admin/Dashboard.tsx` -- Overview with counts from each table (total posts, leads, etc.)
 
-**ProtectedRoute (`src/components/admin/ProtectedRoute.tsx`):**
-- Reads auth state from `AuthContext`
-- While loading: shows a spinner
-- If no user or not admin: redirects to `/admin/login`
-- If authenticated admin: renders `children`
+**Blog (most complex section):**
+4. `src/pages/admin/BlogList.tsx` -- Table with search, status filter (all/draft/published), edit/delete actions
+5. `src/pages/admin/BlogForm.tsx` -- Shared create/edit form: title, slug (auto-generated), category select, tag multi-select, excerpt, cover image URL, content_json textarea, status toggle, reading time
+6. `src/hooks/useAdminBlog.ts` -- React Query hooks: useBlogs, useBlog, useCreateBlog, useUpdateBlog, useDeleteBlog
 
-**AdminLayout (`src/components/admin/AdminLayout.tsx`):**
-- Minimal header with "DPA Admin" branding and logout button
-- No navigation to public site pages (keeps admin area separate)
+**Case Studies:**
+7. `src/pages/admin/CaseStudyList.tsx` -- Table with published filter, edit/delete
+8. `src/pages/admin/CaseStudyForm.tsx` -- Dialog/page form: title, slug, client type, fleet size, challenge, engagement period, key result, content JSON textarea, published toggle
+9. `src/hooks/useAdminCaseStudies.ts` -- CRUD hooks
 
-**App.tsx changes:**
-- Wrap `/admin/*` routes in `AuthContext.Provider`
-- `/admin/login` renders `AdminLogin` (no protection needed)
-- `/admin` renders `ProtectedRoute > AdminLayout > AdminDashboard`
-- All existing public routes remain completely unchanged
+**Services:**
+10. `src/pages/admin/ServiceList.tsx` -- Table with sort order, edit/delete
+11. `src/pages/admin/ServiceForm.tsx` -- Dialog form: name, tagline, description, price amount, price unit, inclusions array editor (add/remove items), most popular toggle, best value toggle, published toggle, sort order
+12. `src/hooks/useAdminServices.ts` -- CRUD hooks
 
-### Security Notes
+**Testimonials:**
+13. `src/pages/admin/TestimonialList.tsx` -- Table with published toggle inline, edit/delete
+14. `src/pages/admin/TestimonialForm.tsx` -- Dialog form: name, role, company, country, quote, avatar URL, published toggle, sort order
+15. `src/hooks/useAdminTestimonials.ts` -- CRUD hooks
 
-- Admin check uses the existing `is_admin()` security definer function server-side via RLS
-- Client-side admin check queries `admins` table (protected by RLS -- only admins can SELECT from it)
-- Since non-admins cannot read the `admins` table, the client will use `supabase.rpc('is_admin')` to check admin status instead, which works for any authenticated user
-- No roles stored in localStorage or client state -- always verified against the database
-- No signup page prevents unauthorized account creation
-- Non-admin users are immediately signed out after the check
+**Trusted Logos:**
+16. `src/pages/admin/LogoList.tsx` -- Table with sort order, edit/delete
+17. `src/pages/admin/LogoForm.tsx` -- Dialog form: name, logo URL, link URL, sort order
+18. `src/hooks/useAdminLogos.ts` -- CRUD hooks
 
-### How to Create Your First Admin
+**Leads:**
+19. `src/pages/admin/LeadList.tsx` -- Read-only table with status badge (new/in_progress/resolved), status dropdown to update, expandable message view
+20. `src/hooks/useAdminLeads.ts` -- useLeads query + useUpdateLeadStatus mutation
 
-After this is deployed, you need to:
-1. Go to the Supabase Dashboard > Authentication > Users
-2. Click "Add user" and create a user with email + password
-3. Go to SQL Editor and run: `INSERT INTO public.admins (user_id, email) VALUES ('<user-uuid>', '<email>');`
-4. You can now log in at `/admin/login`
+**Pages + Sections:**
+21. `src/pages/admin/PageSections.tsx` -- Page selector dropdown, sections list ordered by sort_order, edit JSON content in dialog, draft/published toggle, move up/down buttons
+22. `src/hooks/useAdminPages.ts` -- usePages, usePageSections, useUpdateSection, reorder mutation
+
+**SEO Meta:**
+23. `src/pages/admin/SeoMetaList.tsx` -- Table filtered by entity_type, edit in dialog
+24. `src/pages/admin/SeoMetaForm.tsx` -- Dialog form: entity type select, entity ID, meta title, meta description, OG image URL, canonical URL, noindex toggle
+25. `src/hooks/useAdminSeo.ts` -- CRUD hooks
+
+### Files to Modify (2 files)
+
+1. **`src/App.tsx`** -- Replace single `/admin` route with nested routes for all admin sub-pages, wrap all in single AuthProvider
+2. **`src/components/admin/AdminLayout.tsx`** -- Complete rewrite with sidebar layout
+
+### Key Patterns
+
+**CRUD Hook Pattern (repeated across all sections):**
+```text
+- useQuery for list (with search/filter params)
+- useQuery for single item (by ID)
+- useMutation for create (with queryClient.invalidateQueries)
+- useMutation for update
+- useMutation for delete
+- All mutations show toast on success/error
+```
+
+**Form Pattern:**
+- Blog uses dedicated page routes (`/admin/blog/new`, `/admin/blog/:id`)
+- All other sections use shadcn Dialog for create/edit (simpler data models)
+- Confirm delete via AlertDialog before executing
+
+**Slug Auto-Generation:**
+- On title change, auto-generate slug using `title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')`
+- Allow manual override
+
+**Inclusions Array Editor (Services):**
+- Simple list with text inputs + add/remove buttons
+- Stored as JSON array in the `inclusions` column
+
+**Content JSON Editor:**
+- For blog posts and case studies: textarea with JSON syntax
+- Displays formatted JSON, validates on save
+
+### UX Details
+
+- Loading states: Skeleton components for tables and forms
+- Toast notifications: success/error on all mutations via sonner
+- Confirm before delete: AlertDialog with "Are you sure?" message
+- Clean enterprise style: uses existing navy/teal CSS variables
+- Responsive: sidebar collapses on mobile via SidebarTrigger
+- Tables use shadcn Table component with consistent styling
+- Status badges with color coding (green=published, yellow=draft, blue=new, etc.)
+
+### No Database Changes
+
+All tables and RLS policies already exist. No migration needed. The admin user's authenticated session satisfies the `is_admin()` RLS check for all write operations.
+
+### Technical Notes
+
+- All admin queries bypass the "published only" RLS filter because admin policies use `is_admin()` which grants full access regardless of status
+- React Query cache invalidation ensures UI stays in sync after mutations
+- The AuthProvider wraps all `/admin/*` routes once (moved from per-route wrapping to a parent route wrapper)
 
