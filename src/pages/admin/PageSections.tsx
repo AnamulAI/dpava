@@ -45,7 +45,7 @@ export default function PageSections() {
       <Select value={pageId} onValueChange={setPageId}>
         <SelectTrigger className="w-[250px]"><SelectValue placeholder="Select a page..." /></SelectTrigger>
         <SelectContent>
-          {pagesLoading ? <SelectItem value="" disabled>Loading...</SelectItem> :
+          {pagesLoading ? <SelectItem value="__loading" disabled>Loading...</SelectItem> :
             pages?.map((p) => <SelectItem key={p.id} value={p.id}>{p.title}</SelectItem>)}
         </SelectContent>
       </Select>
