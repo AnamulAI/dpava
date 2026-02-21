@@ -31,16 +31,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
+      (_event, session) => {
         if (session?.user) {
           setUser(session.user);
-          const admin = await checkAdmin(session.user.id);
-          setIsAdmin(admin);
+          setTimeout(async () => {
+            const admin = await checkAdmin(session.user.id);
+            setIsAdmin(admin);
+            setLoading(false);
+          }, 0);
         } else {
           setUser(null);
           setIsAdmin(false);
+          setLoading(false);
         }
-        setLoading(false);
       }
     );
 
@@ -65,6 +68,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       await supabase.auth.signOut();
       throw new Error("Access denied. You are not an admin.");
     }
+
+    setUser(data.user);
+    setIsAdmin(true);
   };
 
   const signOut = async () => {
