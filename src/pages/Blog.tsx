@@ -12,11 +12,12 @@ import { useMemo } from "react";
 const Blog = () => {
   const [activeCatId, setActiveCatId] = useState<string | null>(null);
   const { data: categories = [], isLoading: catsLoading } = usePublicBlogCategories();
-  const { data: allPosts = [], isLoading: allLoading } = usePublicBlogPosts(null);
-  const { data: filteredPosts = [], isLoading: filteredLoading } = usePublicBlogPosts(activeCatId);
+  const { data: allPosts = [], isLoading: postsLoading } = usePublicBlogPosts(null);
 
-  const posts = activeCatId === null ? allPosts : filteredPosts;
-  const postsLoading = activeCatId === null ? allLoading : filteredLoading;
+  const visiblePosts = useMemo(
+    () => activeCatId === null ? allPosts : allPosts.filter((p) => p.category_id === activeCatId),
+    [allPosts, activeCatId],
+  );
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -26,8 +27,8 @@ const Blog = () => {
     return counts;
   }, [allPosts]);
 
-  const featured = activeCatId === null ? posts[0] ?? null : null;
-  const gridPosts = featured ? posts.slice(1) : posts;
+  const featured = activeCatId === null ? visiblePosts[0] ?? null : null;
+  const gridPosts = featured ? visiblePosts.slice(1) : visiblePosts;
 
   return (
     <div className="min-h-screen font-sans">
