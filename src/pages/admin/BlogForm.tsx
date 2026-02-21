@@ -10,6 +10,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent } from "@/components/ui/card";
+import MarkdownEditor from "@/components/admin/MarkdownEditor";
+import { marked } from "marked";
 import type { Json } from "@/integrations/supabase/types";
 
 function toSlug(s: string) {
@@ -35,7 +37,7 @@ export default function BlogForm() {
   const [coverImageUrl, setCoverImageUrl] = useState("");
   const [categoryId, setCategoryId] = useState<string>("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [contentJson, setContentJson] = useState("[]");
+  const [markdownContent, setMarkdownContent] = useState("");
   const [status, setStatus] = useState("draft");
   const [readingTime, setReadingTime] = useState<number | "">("");
   const [authorName, setAuthorName] = useState("N. Shahdat");
@@ -48,7 +50,7 @@ export default function BlogForm() {
       setExcerpt(post.excerpt ?? "");
       setCoverImageUrl(post.cover_image_url ?? "");
       setCategoryId(post.category_id ?? "");
-      setContentJson(JSON.stringify(post.content_json, null, 2));
+      setMarkdownContent(post.content_text ?? "");
       setStatus(post.status);
       setReadingTime(post.reading_time_minutes ?? "");
       setAuthorName(post.author_name ?? "N. Shahdat");
@@ -65,12 +67,12 @@ export default function BlogForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let parsedJson: Json;
-    try { parsedJson = JSON.parse(contentJson); } catch { return; }
+    const contentHtml = marked.parse(markdownContent || "", { async: false }) as string;
 
     const postData = {
       title, slug, excerpt: excerpt || null, cover_image_url: coverImageUrl || null,
-      category_id: categoryId || null, content_json: parsedJson, status,
+      category_id: categoryId || null, content_json: [] as Json, content_text: markdownContent || null,
+      content_html: contentHtml || null, status,
       reading_time_minutes: readingTime === "" ? null : Number(readingTime),
       author_name: authorName || null,
       published_at: status === "published" ? new Date().toISOString() : null,
@@ -145,8 +147,8 @@ export default function BlogForm() {
           </div>
         )}
         <div className="space-y-2">
-          <Label>Content JSON</Label>
-          <Textarea value={contentJson} onChange={(e) => setContentJson(e.target.value)} rows={12} className="font-mono text-xs" />
+          <Label>Content</Label>
+          <MarkdownEditor value={markdownContent} onChange={setMarkdownContent} />
         </div>
       </CardContent></Card>
       <div className="flex gap-2">
