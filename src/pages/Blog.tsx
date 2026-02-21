@@ -7,11 +7,24 @@ import BlogGrid from "@/components/blog/BlogGrid";
 import BlogCTA from "@/components/blog/BlogCTA";
 import { usePublicBlogCategories, usePublicBlogPosts } from "@/hooks/usePublicBlog";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useMemo } from "react";
 
 const Blog = () => {
   const [activeCatId, setActiveCatId] = useState<string | null>(null);
   const { data: categories = [], isLoading: catsLoading } = usePublicBlogCategories();
-  const { data: posts = [], isLoading: postsLoading } = usePublicBlogPosts(activeCatId);
+  const { data: allPosts = [], isLoading: allLoading } = usePublicBlogPosts(null);
+  const { data: filteredPosts = [], isLoading: filteredLoading } = usePublicBlogPosts(activeCatId);
+
+  const posts = activeCatId === null ? allPosts : filteredPosts;
+  const postsLoading = activeCatId === null ? allLoading : filteredLoading;
+
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    allPosts.forEach((p) => {
+      if (p.category_id) counts[p.category_id] = (counts[p.category_id] || 0) + 1;
+    });
+    return counts;
+  }, [allPosts]);
 
   const featured = activeCatId === null ? posts[0] ?? null : null;
   const gridPosts = featured ? posts.slice(1) : posts;
@@ -50,7 +63,7 @@ const Blog = () => {
                     }`}
                   >
                     All
-                    <span className="ml-2 opacity-60">({posts.length + (featured ? 1 : 0)})</span>
+                    <span className="ml-2 opacity-60">({allPosts.length})</span>
                   </button>
                   {categories.map((cat) => (
                     <button
@@ -63,6 +76,7 @@ const Blog = () => {
                       }`}
                     >
                       {cat.name}
+                      <span className="ml-2 opacity-60">({categoryCounts[cat.id] || 0})</span>
                     </button>
                   ))}
                 </>
