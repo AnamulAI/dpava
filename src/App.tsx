@@ -11,6 +11,10 @@ import CaseStudies from "./pages/CaseStudies";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import GdprCompliance from "./pages/GdprCompliance";
+import Disclaimer from "./pages/Disclaimer";
 import AdminLogin from "./pages/AdminLogin";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/admin/ProtectedRoute";
@@ -44,6 +48,10 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/gdpr" element={<GdprCompliance />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
           <Route
             path="/admin/login"
             element={
