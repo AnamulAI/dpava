@@ -1,82 +1,97 @@
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-];
-
 const LEGAL_LINKS = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms" },
+  { label: "GDPR Compliance", href: "/gdpr" },
+  { label: "Disclaimer", href: "/disclaimer" },
 ];
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="bg-navy-deep text-white border-t-2 border-teal/20">
-      <div className="container mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
-          <div>
-            <p className="text-white font-bold text-lg mb-4">
-              DPA <span className="text-teal">Virtual</span> Assistant
-            </p>
-            <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              Professional remote maritime compliance support for DPA, ADPA, and
-              Marine Superintendents. Audit-ready. Always.
-            </p>
-          </div>
+    <footer
+      className="w-full"
+      style={{
+        background: "linear-gradient(180deg, #0B1F3B 0%, #08162B 100%)",
+      }}
+    >
+      {/* Top divider */}
+      <div
+        className="mx-auto"
+        style={{
+          maxWidth: 1200,
+          paddingLeft: 24,
+          paddingRight: 24,
+          paddingTop: 24,
+        }}
+      >
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.10)" }} />
+      </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">
-              Navigation
-            </h4>
-            <ul className="space-y-3">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/60 text-sm hover:text-teal transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">
-              Legal
-            </h4>
-            <ul className="space-y-3">
-              {LEGAL_LINKS.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/60 text-sm hover:text-teal transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      {/* Content */}
+      <div
+        className="mx-auto text-center"
+        style={{
+          maxWidth: 1200,
+          paddingTop: 56,
+          paddingBottom: 40,
+          paddingLeft: 24,
+          paddingRight: 24,
+        }}
+      >
+        {/* Row A — Legal Links */}
+        <div
+          className="flex flex-wrap justify-center"
+          style={{ gap: "10px 20px" }}
+        >
+          {LEGAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="transition-opacity hover:underline"
+              style={{
+                fontSize: 14,
+                lineHeight: "20px",
+                fontWeight: 500,
+                color: "rgba(255,255,255,0.85)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "rgba(255,255,255,1)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(255,255,255,0.85)")
+              }
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
-        <div className="border-t border-white/10 pt-8 space-y-2">
-          <p className="text-white/60 text-xs text-center tracking-wide">
-            Serving Globally | 24/7 Support
-          </p>
-          <p className="text-white/40 text-xs text-center">
-            © {year} DPA Virtual Assistant. All rights reserved.
-          </p>
-        </div>
+        {/* Row B — Tagline */}
+        <p
+          style={{
+            marginTop: 24,
+            fontSize: 14,
+            lineHeight: "20px",
+            fontWeight: 500,
+            letterSpacing: "0.2px",
+            color: "rgba(255,255,255,0.80)",
+          }}
+        >
+          Serving Globally | 24/7 Support
+        </p>
+
+        {/* Row C — Copyright */}
+        <p
+          style={{
+            marginTop: 10,
+            fontSize: 13,
+            lineHeight: "18px",
+            fontWeight: 400,
+            color: "rgba(255,255,255,0.65)",
+          }}
+        >
+          © {new Date().getFullYear()} DPA Virtual Assistant. All rights
+          reserved.
+        </p>
       </div>
     </footer>
   );
