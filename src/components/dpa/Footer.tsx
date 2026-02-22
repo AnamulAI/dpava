@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
+import { Mail, Phone, Headset, MapPin } from "lucide-react";
 
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+const SERVICE_ITEMS = [
+  "Certification Tracking",
+  "ISM / SMS Updates",
+  "Audit Preparation",
+  "Port Clearance Support",
+  "Compliance Reporting",
+  "Vendor Coordination",
+  "Survey Planning",
+  "Deficiency Response",
 ];
 
 const LEGAL_LINKS = [
@@ -39,53 +42,59 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Col 2: Navigation */}
+          {/* Col 2: Services */}
           <div>
             <h4 style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.5px", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.50)", marginBottom: 14 }}>
-              Navigation
+              Services
             </h4>
             <ul className="flex flex-col gap-2">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
+              {SERVICE_ITEMS.map((item) => (
+                <li key={item}>
                   <Link
-                    to={link.href}
+                    to="/services"
                     className="transition-colors hover:underline"
                     style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.70)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,1)")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.70)")}
                   >
-                    {link.label}
+                    {item}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 3: Legal */}
+          {/* Col 3: Contact Info */}
           <div>
             <h4 style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.5px", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.50)", marginBottom: 14 }}>
-              Legal
+              Contact
             </h4>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-3">
               <li>
-                <Link to="/privacy-policy" className="transition-colors hover:underline" style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.70)" }}
+                <a href="mailto:support@dpavirtualassistant.com" className="flex items-center gap-2 transition-colors hover:underline"
+                  style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.70)" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,1)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.70)")}>
-                  Privacy Policy
-                </Link>
+                  <Mail size={14} className="shrink-0" /> support@dpavirtualassistant.com
+                </a>
               </li>
               <li>
-                <Link to="/terms" className="transition-colors hover:underline" style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.70)" }}
+                <a href="tel:+8801741468828" className="flex items-center gap-2 transition-colors hover:underline"
+                  style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.70)" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,1)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.70)")}>
-                  Terms &amp; Conditions
-                </Link>
+                  <Phone size={14} className="shrink-0" /> +880 1741-468828
+                </a>
+              </li>
+              <li className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.60)" }}>
+                <Headset size={14} className="shrink-0" /> 24/7 Support Available
+              </li>
+              <li className="flex items-center gap-2" style={{ fontSize: 13, fontWeight: 400, color: "rgba(255,255,255,0.50)", marginTop: 4 }}>
+                <MapPin size={14} className="shrink-0" /> Based in: Chattogram, Bangladesh | Serving globally
               </li>
             </ul>
           </div>
         </div>
-
-        {/* B) DIVIDER */}
         <div style={{ marginTop: 40, marginBottom: 24, borderTop: "1px solid rgba(255,255,255,0.10)" }} />
 
         {/* C) SUB-FOOTER */}
