@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const WA_LINK = "https://wa.me/88017414688828";
 
@@ -10,18 +11,27 @@ const PROOF_CHIPS = [
 
 export default function Hero() {
   return (
-    <section className="bg-background py-20 md:py-28 border-b border-dpa-border">
-      <div className="container mx-auto px-6">
+    <section className="relative bg-background py-20 md:py-28 border-b border-dpa-border overflow-hidden">
+      {/* Blurred background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})`, filter: "blur(12px)", transform: "scale(1.05)" }}
+        aria-hidden="true"
+      />
+      {/* Dark navy overlay */}
+      <div className="absolute inset-0" style={{ backgroundColor: "rgba(11,31,59,0.78)" }} aria-hidden="true" />
+
+      <div className="relative z-10 container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
             <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-4">
               Maritime Compliance Support
             </p>
-            <h1 className="text-navy text-4xl md:text-5xl font-bold leading-[1.1] mb-8 max-w-lg">
+            <h1 className="text-white text-4xl md:text-5xl font-bold leading-[1.1] mb-8 max-w-lg">
               Professional Remote Marine Compliance Support
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-[540px]">
+            <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-[540px]">
               Supporting DPA, ADPA, and Marine Superintendents with certification
               tracking, ISM documentation, and audit readiness — without hiring
               full-time staff.
@@ -41,7 +51,7 @@ export default function Hero() {
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center border border-navy text-navy font-semibold px-7 py-3 hover:bg-navy hover:text-white transition-colors text-sm"
+                className="inline-flex items-center border border-white/40 text-white font-semibold px-7 py-3 hover:bg-white/10 transition-colors text-sm"
               >
                 Contact Us
               </a>
@@ -52,7 +62,7 @@ export default function Hero() {
               {PROOF_CHIPS.map((chip) => (
                 <span
                   key={chip}
-                  className="border border-teal/50 text-sm font-medium text-foreground px-4 py-1.5 bg-teal/5"
+                  className="border border-white/20 text-white/60 text-sm font-medium px-4 py-1.5"
                 >
                   {chip}
                 </span>
@@ -63,12 +73,10 @@ export default function Hero() {
           {/* Right — Silhouette + maritime pattern */}
           <div className="flex justify-center items-center">
             <div className="relative w-72 h-72 md:w-80 md:h-80">
-              {/* Maritime background pattern */}
               <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
                 <MaritimePattern />
               </div>
-              {/* Circular frame */}
-              <div className="absolute inset-0 rounded-full border-2 border-teal bg-gray-light flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 rounded-full border-2 border-teal bg-white/10 flex items-center justify-center overflow-hidden">
                 <ProfessionalSilhouette />
               </div>
             </div>
@@ -91,7 +99,7 @@ function ProfessionalSilhouette() {
   return (
     <svg
       viewBox="0 0 200 200"
-      className="w-56 h-56 text-navy opacity-30"
+      className="w-56 h-56 text-white opacity-30"
       fill="currentColor"
     >
       <ellipse cx="100" cy="68" rx="28" ry="32" />
