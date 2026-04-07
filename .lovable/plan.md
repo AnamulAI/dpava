@@ -1,41 +1,55 @@
 
 
-## Fix Admin Login Loading Problem
+## Plan: Add Blurred Background Images to All Hero Sections
 
-### Root Cause
+### Current State
+- **Services & Contact** heroes already use a blurred background image (`services-hero-bg.jpg`) — no changes needed there.
+- **Homepage, About, Blog, Case Studies** heroes have either plain backgrounds or SVG art — these need blurred background images.
 
-After `signInWithPassword()` succeeds, two things happen simultaneously:
-1. The `signIn` method calls `checkAdmin()` (via `supabase.rpc("is_admin")`)
-2. The `onAuthStateChange` listener fires and also calls `checkAdmin()`
+### What Will Change
 
-These concurrent RPC calls and state updates can cause the login flow to hang, leaving the spinner stuck indefinitely.
+**4 hero components** will be updated to add a blurred, related background image with a dark navy overlay so text remains readable:
 
-### Solution
+| Page | Component | Image Theme |
+|------|-----------|-------------|
+| Homepage | `src/components/dpa/Hero.tsx` | Container ship at sea / port operations |
+| About | `src/components/about/AboutHero.tsx` | Maritime office / ship bridge |
+| Blog | `src/components/blog/BlogHero.tsx` | Ship navigation charts / maritime documents |
+| Case Studies | `src/components/case-studies/CaseStudiesHero.tsx` | Ship deck / vessel inspection |
 
-Simplify the auth flow to avoid the race condition:
+### Implementation Pattern
 
-1. In the `onAuthStateChange` handler, avoid calling the RPC during the initial sign-in event -- let the `signIn` method handle it
-2. In the `signIn` method, after the admin check passes, directly update the context state (`setUser`, `setIsAdmin`) so the navigation works immediately without waiting for `onAuthStateChange`
-3. Add a `setTimeout` wrapper around the `checkAdmin` call in `onAuthStateChange` to defer it slightly (Supabase best practice to avoid async deadlocks inside the listener callback)
+Each hero will follow the same proven pattern already used by Services and Contact:
 
-### File Changes
-
-**`src/contexts/AuthContext.tsx`** -- Fix the race condition:
-
-- Wrap the async work inside `onAuthStateChange` with `setTimeout` to avoid blocking the Supabase auth flow (per Supabase docs, the callback should not perform long async operations synchronously)
-- In the `signIn` method, after successful admin check, set `user` and `isAdmin` state directly so `ProtectedRoute` immediately allows access
-- Keep `getSession` for initial page load (session restore)
-
-### Technical Details
-
-The key change in `onAuthStateChange`:
 ```text
-Before: async callback directly awaits checkAdmin (can deadlock)
-After:  callback sets user immediately, defers admin check via setTimeout
+<section class="relative overflow-hidden ...">
+  <!-- Blurred BG image -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image: url(...); filter: blur(12px); transform: scale(1.05)" />
+  <!-- Dark navy overlay -->
+  <div class="absolute inset-0" style="background-color: rgba(11,31,59,0.78)" />
+  <!-- Content (relative z-10) -->
+  <div class="relative z-10 ..."> ... </div>
+</section>
 ```
 
-The key change in `signIn`:
-```text
-Before: only calls checkAdmin, relies on onAuthStateChange to set state
-After:  calls checkAdmin AND sets user/isAdmin state directly
-```
+### Steps
+
+1. **Download 4 royalty-free maritime images** from Unsplash to `src/assets/`:
+   - `hero-bg.jpg` — container ship / port (Homepage)
+   - `about-hero-bg.jpg` — ship bridge / maritime office (About)
+   - `blog-hero-bg.jpg` — nautical charts / navigation (Blog)
+   - `casestudies-hero-bg.jpg` — ship deck / inspection (Case Studies)
+
+2. **Update `Hero.tsx` (Homepage)** — Add blurred background image + navy overlay, adjust text colors from navy to white for contrast, keep all existing content (CTA buttons, proof chips, silhouette).
+
+3. **Update `AboutHero.tsx`** — Add blurred background image + navy overlay, adjust text colors for dark background, keep circular headshot placeholder and proof chips.
+
+4. **Update `BlogHero.tsx`** — Replace the SVG marine art background with the real blurred image + navy overlay, adjust text colors.
+
+5. **Update `CaseStudiesHero.tsx`** — Replace the SVG compass/grid art background with the real blurred image, keep the existing navy overlay. Text is already white so minimal color changes needed.
+
+### Design Consistency
+- All heroes will share the same blur amount (12px), scale (1.05), and overlay opacity (~0.78) for a unified look across the site.
+- Text on dark overlays will use white/white-opacity colors matching the Services and Contact hero pattern.
+
