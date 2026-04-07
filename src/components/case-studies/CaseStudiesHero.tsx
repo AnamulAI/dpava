@@ -1,101 +1,22 @@
 import { ArrowRight } from "lucide-react";
+import casestudiesHeroBg from "@/assets/casestudies-hero-bg.jpg";
 
 const WA_LINK = "https://wa.me/88017414688828";
 
 export default function CaseStudiesHero() {
   return (
-    <section className="relative py-20 md:py-28 border-b border-dpa-border overflow-hidden bg-navy-deep">
-      {/* Abstract marine SVG background */}
+    <section className="relative py-20 md:py-28 border-b border-dpa-border overflow-hidden">
+      {/* Blurred background image */}
       <div
-        className="absolute inset-0 opacity-30"
-        style={{ filter: "blur(12px)" }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${casestudiesHeroBg})`, filter: "blur(12px)", transform: "scale(1.05)" }}
         aria-hidden="true"
-      >
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 1200 600"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Nautical chart grid lines */}
-          {Array.from({ length: 20 }).map((_, i) => (
-            <line
-              key={`h${i}`}
-              x1="0"
-              y1={i * 32}
-              x2="1200"
-              y2={i * 32}
-              stroke="#14b8a6"
-              strokeWidth="0.4"
-              opacity="0.25"
-            />
-          ))}
-          {Array.from({ length: 30 }).map((_, i) => (
-            <line
-              key={`v${i}`}
-              x1={i * 42}
-              y1="0"
-              x2={i * 42}
-              y2="600"
-              stroke="#14b8a6"
-              strokeWidth="0.4"
-              opacity="0.25"
-            />
-          ))}
-          {/* Diagonal grid lines */}
-          {Array.from({ length: 12 }).map((_, i) => (
-            <line
-              key={`d${i}`}
-              x1={i * 110 - 200}
-              y1="0"
-              x2={i * 110 + 400}
-              y2="600"
-              stroke="#ffffff"
-              strokeWidth="0.3"
-              opacity="0.12"
-            />
-          ))}
-          {/* Concentric wave arcs — ocean horizon */}
-          {[80, 160, 240, 320, 400, 480, 560].map((r, i) => (
-            <path
-              key={`arc${i}`}
-              d={`M ${600 - r} 600 A ${r} ${r} 0 0 1 ${600 + r} 600`}
-              fill="none"
-              stroke="#14b8a6"
-              strokeWidth="1"
-              opacity={0.18 - i * 0.015}
-            />
-          ))}
-          {/* Compass rose — center */}
-          <g transform="translate(600,280)" opacity="0.22">
-            {/* N/S/E/W spokes */}
-            <line x1="0" y1="-90" x2="0" y2="90" stroke="#14b8a6" strokeWidth="1.2" />
-            <line x1="-90" y1="0" x2="90" y2="0" stroke="#14b8a6" strokeWidth="1.2" />
-            {/* Diagonal spokes */}
-            <line x1="-64" y1="-64" x2="64" y2="64" stroke="#14b8a6" strokeWidth="0.7" />
-            <line x1="64" y1="-64" x2="-64" y2="64" stroke="#14b8a6" strokeWidth="0.7" />
-            {/* Outer ring */}
-            <circle r="90" fill="none" stroke="#14b8a6" strokeWidth="0.8" />
-            <circle r="55" fill="none" stroke="#14b8a6" strokeWidth="0.5" />
-            <circle r="20" fill="none" stroke="#14b8a6" strokeWidth="0.5" />
-            {/* Cardinal points — simple triangles */}
-            <polygon points="0,-95 -6,-75 6,-75" fill="#14b8a6" opacity="0.6" />
-            <polygon points="0,95 -6,75 6,75" fill="#14b8a6" opacity="0.4" />
-            <polygon points="95,0 75,-6 75,6" fill="#14b8a6" opacity="0.4" />
-            <polygon points="-95,0 -75,-6 -75,6" fill="#14b8a6" opacity="0.4" />
-          </g>
-          {/* Secondary decorative arcs */}
-          <path d="M 0 500 Q 300 350 600 500 T 1200 500" fill="none" stroke="#ffffff" strokeWidth="0.6" opacity="0.1" />
-          <path d="M 0 450 Q 300 300 600 450 T 1200 450" fill="none" stroke="#ffffff" strokeWidth="0.6" opacity="0.08" />
-        </svg>
-      </div>
-
-      {/* Deep navy overlay */}
-      <div className="absolute inset-0 bg-navy-deep/80" aria-hidden="true" />
+      />
+      {/* Dark navy overlay */}
+      <div className="absolute inset-0" style={{ backgroundColor: "rgba(11,31,59,0.78)" }} aria-hidden="true" />
 
       {/* Content */}
-      <div className="relative container mx-auto px-6 max-w-3xl">
+      <div className="relative z-10 container mx-auto px-6 max-w-3xl">
         <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-5">
           Case Studies
         </p>
