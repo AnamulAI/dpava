@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import ceoPhoto from "@/assets/ceo-photo.jpeg";
 
 const WA_LINK = "https://wa.me/88017414688828";
 
