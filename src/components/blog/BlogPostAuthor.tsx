@@ -1,11 +1,13 @@
+import ceoPhoto from "@/assets/ceo-photo.jpeg";
+
 export default function BlogPostAuthor() {
   return (
     <section className="bg-gray-light py-14 md:py-16 border-b border-dpa-border">
       <div className="container mx-auto px-6 max-w-3xl">
         <div className="flex flex-col sm:flex-row gap-6 items-start">
-          {/* Author avatar placeholder */}
+          {/* Author avatar */}
           <div className="w-20 h-20 shrink-0 border-2 border-teal overflow-hidden flex items-center justify-center bg-background" style={{ borderRadius: "50%" }}>
-            <span className="text-navy font-bold text-xl">NS</span>
+            <img src={ceoPhoto} alt="N. Shahdat" className="w-full h-full object-cover" />
           </div>
 
           <div>
