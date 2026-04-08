@@ -1,4 +1,5 @@
 import aboutHeroBg from "@/assets/about-hero-bg.jpg";
+import ceoPhoto from "@/assets/ceo-photo.jpeg";
 
 const PROOF_CHIPS = [
   "8+ Years Maritime Experience",
@@ -60,7 +61,7 @@ export default function AboutHero() {
                 <MaritimePattern />
               </div>
               <div className="absolute inset-0 rounded-full border-2 border-teal bg-white/10 flex items-center justify-center overflow-hidden">
-                <ProfessionalSilhouette />
+                <img src={ceoPhoto} alt="N. Shahdat" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
