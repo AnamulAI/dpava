@@ -1,4 +1,5 @@
 import aboutHeroBg from "@/assets/about-hero-bg.jpg";
+import ceoPhoto from "@/assets/ceo-photo.jpeg";
 
 const PROOF_CHIPS = [
   "8+ Years Maritime Experience",
