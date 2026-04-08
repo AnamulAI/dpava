@@ -1,16 +1,11 @@
+import logoMgi from "@/assets/logo-mgi.webp";
+import logoKsl from "@/assets/logo-ksl.webp";
+import logoWahKwong from "@/assets/logo-wahkwong.webp";
+
 const COMPANIES = [
-  {
-    name: "MGI",
-    full: "Marine Group International",
-  },
-  {
-    name: "KSL",
-    full: "KSL Shipping",
-  },
-  {
-    name: "Wah Kwong",
-    full: "Wah Kwong Maritime Transport",
-  },
+  { name: "MGI", full: "Meghna Group of Industries", logo: logoMgi },
+  { name: "KSL", full: "Karim Shipping Lines Ltd.", logo: logoKsl },
+  { name: "Wah Kwong", full: "Wah Kwong Maritime Transport Holdings Limited", logo: logoWahKwong },
 ];
 
 export default function ShippingCompanies() {
@@ -26,27 +21,23 @@ export default function ShippingCompanies() {
           </h2>
         </div>
 
-        {/* Logo strip */}
         <div className="border-t border-dpa-border pt-10 pb-8">
           <div className="flex flex-wrap items-center justify-center gap-0 divide-x divide-dpa-border">
             {COMPANIES.map((company) => (
               <div
                 key={company.name}
-                className="flex flex-col items-center justify-center px-20 py-8"
+                className="flex flex-col items-center justify-center px-12 md:px-20 py-8"
               >
-                {/* Monochrome navy logotype treatment */}
-                <span className="text-navy font-bold text-2xl tracking-[0.12em] uppercase opacity-60 select-none">
-                  {company.name}
-                </span>
-                <span className="text-muted-foreground text-xs mt-1 tracking-wide">
-                  {company.full}
-                </span>
+                <img
+                  src={company.logo}
+                  alt={company.full}
+                  className="h-16 md:h-20 max-w-[200px] object-contain"
+                />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Disclaimer */}
         <p className="text-center text-muted-foreground text-[10px] mt-4 max-w-xl mx-auto leading-relaxed">
           Logos displayed for reference of professional association and support
           experience.
